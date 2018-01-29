@@ -62,6 +62,14 @@ Partial Class FormFavorites
         Me.LinkSave = New System.Windows.Forms.LinkLabel()
         Me.LinkManage = New System.Windows.Forms.LinkLabel()
         Me.delayedDrawHTML = New System.Windows.Forms.Timer(Me.components)
+        Me.txtTrackLikeTo = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.txtTrackLikeFrom = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.txtLenTo = New System.Windows.Forms.TextBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.txtLenFrom = New System.Windows.Forms.TextBox()
+        Me.Label24 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'WebBrowser1
@@ -78,7 +86,7 @@ Partial Class FormFavorites
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(3, 134)
+        Me.Label1.Location = New System.Drawing.Point(3, 181)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(46, 13)
         Me.Label1.TabIndex = 1
@@ -86,7 +94,7 @@ Partial Class FormFavorites
         '
         'txtHPFrom
         '
-        Me.txtHPFrom.Location = New System.Drawing.Point(55, 131)
+        Me.txtHPFrom.Location = New System.Drawing.Point(55, 178)
         Me.txtHPFrom.Name = "txtHPFrom"
         Me.txtHPFrom.Size = New System.Drawing.Size(30, 20)
         Me.txtHPFrom.TabIndex = 2
@@ -95,7 +103,7 @@ Partial Class FormFavorites
         '
         'txtHPTo
         '
-        Me.txtHPTo.Location = New System.Drawing.Point(104, 131)
+        Me.txtHPTo.Location = New System.Drawing.Point(104, 178)
         Me.txtHPTo.Name = "txtHPTo"
         Me.txtHPTo.Size = New System.Drawing.Size(38, 20)
         Me.txtHPTo.TabIndex = 4
@@ -105,7 +113,7 @@ Partial Class FormFavorites
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(88, 134)
+        Me.Label2.Location = New System.Drawing.Point(88, 181)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(13, 13)
         Me.Label2.TabIndex = 3
@@ -113,7 +121,7 @@ Partial Class FormFavorites
         '
         'txtKgTo
         '
-        Me.txtKgTo.Location = New System.Drawing.Point(104, 154)
+        Me.txtKgTo.Location = New System.Drawing.Point(104, 201)
         Me.txtKgTo.Name = "txtKgTo"
         Me.txtKgTo.Size = New System.Drawing.Size(38, 20)
         Me.txtKgTo.TabIndex = 8
@@ -123,7 +131,7 @@ Partial Class FormFavorites
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(88, 157)
+        Me.Label3.Location = New System.Drawing.Point(88, 204)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(13, 13)
         Me.Label3.TabIndex = 7
@@ -131,7 +139,7 @@ Partial Class FormFavorites
         '
         'txtKgFrom
         '
-        Me.txtKgFrom.Location = New System.Drawing.Point(55, 154)
+        Me.txtKgFrom.Location = New System.Drawing.Point(55, 201)
         Me.txtKgFrom.Name = "txtKgFrom"
         Me.txtKgFrom.Size = New System.Drawing.Size(30, 20)
         Me.txtKgFrom.TabIndex = 6
@@ -141,7 +149,7 @@ Partial Class FormFavorites
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(3, 157)
+        Me.Label4.Location = New System.Drawing.Point(3, 204)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(50, 13)
         Me.Label4.TabIndex = 5
@@ -149,7 +157,7 @@ Partial Class FormFavorites
         '
         'txtHPTonTo
         '
-        Me.txtHPTonTo.Location = New System.Drawing.Point(104, 177)
+        Me.txtHPTonTo.Location = New System.Drawing.Point(104, 224)
         Me.txtHPTonTo.Name = "txtHPTonTo"
         Me.txtHPTonTo.Size = New System.Drawing.Size(38, 20)
         Me.txtHPTonTo.TabIndex = 12
@@ -159,7 +167,7 @@ Partial Class FormFavorites
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(88, 180)
+        Me.Label5.Location = New System.Drawing.Point(88, 227)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(13, 13)
         Me.Label5.TabIndex = 11
@@ -167,7 +175,7 @@ Partial Class FormFavorites
         '
         'txtHPTonFrom
         '
-        Me.txtHPTonFrom.Location = New System.Drawing.Point(55, 177)
+        Me.txtHPTonFrom.Location = New System.Drawing.Point(55, 224)
         Me.txtHPTonFrom.Name = "txtHPTonFrom"
         Me.txtHPTonFrom.Size = New System.Drawing.Size(30, 20)
         Me.txtHPTonFrom.TabIndex = 10
@@ -177,7 +185,7 @@ Partial Class FormFavorites
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(3, 180)
+        Me.Label6.Location = New System.Drawing.Point(3, 227)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(55, 13)
         Me.Label6.TabIndex = 9
@@ -185,7 +193,7 @@ Partial Class FormFavorites
         '
         'txtSpeedTo
         '
-        Me.txtSpeedTo.Location = New System.Drawing.Point(104, 223)
+        Me.txtSpeedTo.Location = New System.Drawing.Point(104, 270)
         Me.txtSpeedTo.Name = "txtSpeedTo"
         Me.txtSpeedTo.Size = New System.Drawing.Size(38, 20)
         Me.txtSpeedTo.TabIndex = 20
@@ -195,7 +203,7 @@ Partial Class FormFavorites
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(88, 226)
+        Me.Label7.Location = New System.Drawing.Point(88, 273)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(13, 13)
         Me.Label7.TabIndex = 19
@@ -203,7 +211,7 @@ Partial Class FormFavorites
         '
         'txtSpeedFrom
         '
-        Me.txtSpeedFrom.Location = New System.Drawing.Point(55, 223)
+        Me.txtSpeedFrom.Location = New System.Drawing.Point(55, 270)
         Me.txtSpeedFrom.Name = "txtSpeedFrom"
         Me.txtSpeedFrom.Size = New System.Drawing.Size(30, 20)
         Me.txtSpeedFrom.TabIndex = 18
@@ -213,7 +221,7 @@ Partial Class FormFavorites
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(3, 226)
+        Me.Label8.Location = New System.Drawing.Point(3, 273)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(47, 13)
         Me.Label8.TabIndex = 17
@@ -221,7 +229,7 @@ Partial Class FormFavorites
         '
         'txtAccelTo
         '
-        Me.txtAccelTo.Location = New System.Drawing.Point(104, 200)
+        Me.txtAccelTo.Location = New System.Drawing.Point(104, 247)
         Me.txtAccelTo.Name = "txtAccelTo"
         Me.txtAccelTo.Size = New System.Drawing.Size(38, 20)
         Me.txtAccelTo.TabIndex = 16
@@ -231,7 +239,7 @@ Partial Class FormFavorites
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(88, 203)
+        Me.Label9.Location = New System.Drawing.Point(88, 250)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(13, 13)
         Me.Label9.TabIndex = 15
@@ -239,7 +247,7 @@ Partial Class FormFavorites
         '
         'txtAccelFrom
         '
-        Me.txtAccelFrom.Location = New System.Drawing.Point(55, 200)
+        Me.txtAccelFrom.Location = New System.Drawing.Point(55, 247)
         Me.txtAccelFrom.Name = "txtAccelFrom"
         Me.txtAccelFrom.Size = New System.Drawing.Size(30, 20)
         Me.txtAccelFrom.TabIndex = 14
@@ -249,7 +257,7 @@ Partial Class FormFavorites
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(3, 203)
+        Me.Label10.Location = New System.Drawing.Point(3, 250)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(43, 13)
         Me.Label10.TabIndex = 13
@@ -258,7 +266,7 @@ Partial Class FormFavorites
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(146, 226)
+        Me.Label11.Location = New System.Drawing.Point(146, 273)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(33, 13)
         Me.Label11.TabIndex = 25
@@ -267,7 +275,7 @@ Partial Class FormFavorites
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(146, 203)
+        Me.Label12.Location = New System.Drawing.Point(146, 250)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(12, 13)
         Me.Label12.TabIndex = 24
@@ -276,7 +284,7 @@ Partial Class FormFavorites
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(146, 157)
+        Me.Label14.Location = New System.Drawing.Point(146, 204)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(20, 13)
         Me.Label14.TabIndex = 22
@@ -285,7 +293,7 @@ Partial Class FormFavorites
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(146, 134)
+        Me.Label15.Location = New System.Drawing.Point(146, 181)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(22, 13)
         Me.Label15.TabIndex = 21
@@ -298,14 +306,14 @@ Partial Class FormFavorites
         Me.Panel1.AutoScroll = True
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(32, Byte), Integer))
         Me.Panel1.ForeColor = System.Drawing.Color.White
-        Me.Panel1.Location = New System.Drawing.Point(3, 270)
+        Me.Panel1.Location = New System.Drawing.Point(3, 316)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(167, 434)
+        Me.Panel1.Size = New System.Drawing.Size(167, 388)
         Me.Panel1.TabIndex = 26
         '
         'txtLikeTo
         '
-        Me.txtLikeTo.Location = New System.Drawing.Point(104, 245)
+        Me.txtLikeTo.Location = New System.Drawing.Point(104, 292)
         Me.txtLikeTo.Name = "txtLikeTo"
         Me.txtLikeTo.Size = New System.Drawing.Size(22, 20)
         Me.txtLikeTo.TabIndex = 30
@@ -315,7 +323,7 @@ Partial Class FormFavorites
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(88, 248)
+        Me.Label13.Location = New System.Drawing.Point(88, 295)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(13, 13)
         Me.Label13.TabIndex = 29
@@ -323,7 +331,7 @@ Partial Class FormFavorites
         '
         'txtLikeFrom
         '
-        Me.txtLikeFrom.Location = New System.Drawing.Point(63, 245)
+        Me.txtLikeFrom.Location = New System.Drawing.Point(63, 292)
         Me.txtLikeFrom.Name = "txtLikeFrom"
         Me.txtLikeFrom.Size = New System.Drawing.Size(22, 20)
         Me.txtLikeFrom.TabIndex = 28
@@ -333,7 +341,7 @@ Partial Class FormFavorites
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(3, 248)
+        Me.Label16.Location = New System.Drawing.Point(3, 295)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(36, 13)
         Me.Label16.TabIndex = 27
@@ -341,7 +349,7 @@ Partial Class FormFavorites
         '
         'txtCarText
         '
-        Me.txtCarText.Location = New System.Drawing.Point(55, 108)
+        Me.txtCarText.Location = New System.Drawing.Point(55, 155)
         Me.txtCarText.MaxLength = 30
         Me.txtCarText.Name = "txtCarText"
         Me.txtCarText.Size = New System.Drawing.Size(113, 20)
@@ -350,7 +358,7 @@ Partial Class FormFavorites
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(3, 111)
+        Me.Label17.Location = New System.Drawing.Point(3, 158)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(31, 13)
         Me.Label17.TabIndex = 31
@@ -360,7 +368,7 @@ Partial Class FormFavorites
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.Location = New System.Drawing.Point(3, 92)
+        Me.Label18.Location = New System.Drawing.Point(3, 139)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(135, 13)
         Me.Label18.TabIndex = 33
@@ -421,9 +429,81 @@ Partial Class FormFavorites
         Me.LinkManage.Text = "Manage Favoritizeds"
         Me.LinkManage.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'Timer1
+        'delayedDrawHTML
         '
         Me.delayedDrawHTML.Interval = 600
+        '
+        'txtTrackLikeTo
+        '
+        Me.txtTrackLikeTo.Location = New System.Drawing.Point(112, 109)
+        Me.txtTrackLikeTo.Name = "txtTrackLikeTo"
+        Me.txtTrackLikeTo.Size = New System.Drawing.Size(22, 20)
+        Me.txtTrackLikeTo.TabIndex = 48
+        Me.txtTrackLikeTo.Text = "10"
+        Me.txtTrackLikeTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(96, 112)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(13, 13)
+        Me.Label21.TabIndex = 47
+        Me.Label21.Text = "<"
+        '
+        'txtTrackLikeFrom
+        '
+        Me.txtTrackLikeFrom.Location = New System.Drawing.Point(73, 109)
+        Me.txtTrackLikeFrom.Name = "txtTrackLikeFrom"
+        Me.txtTrackLikeFrom.Size = New System.Drawing.Size(22, 20)
+        Me.txtTrackLikeFrom.TabIndex = 46
+        Me.txtTrackLikeFrom.Text = "0"
+        Me.txtTrackLikeFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(3, 112)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(36, 13)
+        Me.Label22.TabIndex = 45
+        Me.Label22.Text = "Like >"
+        '
+        'txtLenTo
+        '
+        Me.txtLenTo.Location = New System.Drawing.Point(112, 86)
+        Me.txtLenTo.Name = "txtLenTo"
+        Me.txtLenTo.Size = New System.Drawing.Size(43, 20)
+        Me.txtLenTo.TabIndex = 44
+        Me.txtLenTo.Text = "9999"
+        Me.txtLenTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(96, 89)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(13, 13)
+        Me.Label23.TabIndex = 43
+        Me.Label23.Text = "<"
+        '
+        'txtLenFrom
+        '
+        Me.txtLenFrom.Location = New System.Drawing.Point(55, 86)
+        Me.txtLenFrom.Name = "txtLenFrom"
+        Me.txtLenFrom.Size = New System.Drawing.Size(40, 20)
+        Me.txtLenFrom.TabIndex = 42
+        Me.txtLenFrom.Text = "0"
+        Me.txtLenFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(3, 89)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(37, 13)
+        Me.Label24.TabIndex = 41
+        Me.Label24.Text = "KMs >"
         '
         'FormFavorites
         '
@@ -431,6 +511,14 @@ Partial Class FormFavorites
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(32, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1356, 705)
+        Me.Controls.Add(Me.txtTrackLikeTo)
+        Me.Controls.Add(Me.Label21)
+        Me.Controls.Add(Me.txtTrackLikeFrom)
+        Me.Controls.Add(Me.Label22)
+        Me.Controls.Add(Me.txtLenTo)
+        Me.Controls.Add(Me.Label23)
+        Me.Controls.Add(Me.txtLenFrom)
+        Me.Controls.Add(Me.Label24)
         Me.Controls.Add(Me.LinkManage)
         Me.Controls.Add(Me.LinkSave)
         Me.Controls.Add(Me.txtTrackText)
@@ -517,4 +605,12 @@ Partial Class FormFavorites
     Friend WithEvents LinkSave As LinkLabel
     Friend WithEvents LinkManage As LinkLabel
     Friend WithEvents delayedDrawHTML As Timer
+    Friend WithEvents txtTrackLikeTo As TextBox
+    Friend WithEvents Label21 As Label
+    Friend WithEvents txtTrackLikeFrom As TextBox
+    Friend WithEvents Label22 As Label
+    Friend WithEvents txtLenTo As TextBox
+    Friend WithEvents Label23 As Label
+    Friend WithEvents txtLenFrom As TextBox
+    Friend WithEvents Label24 As Label
 End Class

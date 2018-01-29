@@ -239,13 +239,15 @@ Partial Class FormChangeMod
         '
         'btCalcZ
         '
-        Me.btCalcZ.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.btCalcZ.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.btCalcZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btCalcZ.ForeColor = System.Drawing.Color.MidnightBlue
         Me.btCalcZ.Location = New System.Drawing.Point(253, 240)
         Me.btCalcZ.Name = "btCalcZ"
         Me.btCalcZ.Size = New System.Drawing.Size(63, 20)
         Me.btCalcZ.TabIndex = 40
         Me.btCalcZ.Text = "Calculate"
-        Me.btCalcZ.UseVisualStyleBackColor = True
+        Me.btCalcZ.UseVisualStyleBackColor = False
         '
         'Label15
         '
@@ -297,23 +299,27 @@ Partial Class FormChangeMod
         '
         'btCalcY
         '
-        Me.btCalcY.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.btCalcY.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.btCalcY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btCalcY.ForeColor = System.Drawing.Color.MidnightBlue
         Me.btCalcY.Location = New System.Drawing.Point(253, 264)
         Me.btCalcY.Name = "btCalcY"
         Me.btCalcY.Size = New System.Drawing.Size(63, 20)
         Me.btCalcY.TabIndex = 47
         Me.btCalcY.Text = "Calculate"
-        Me.btCalcY.UseVisualStyleBackColor = True
+        Me.btCalcY.UseVisualStyleBackColor = False
         '
         'btCalcRotation
         '
-        Me.btCalcRotation.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.btCalcRotation.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.btCalcRotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btCalcRotation.ForeColor = System.Drawing.Color.MidnightBlue
         Me.btCalcRotation.Location = New System.Drawing.Point(253, 288)
         Me.btCalcRotation.Name = "btCalcRotation"
         Me.btCalcRotation.Size = New System.Drawing.Size(63, 20)
         Me.btCalcRotation.TabIndex = 48
         Me.btCalcRotation.Text = "Calculate"
-        Me.btCalcRotation.UseVisualStyleBackColor = True
+        Me.btCalcRotation.UseVisualStyleBackColor = False
         '
         'Label20
         '
@@ -567,7 +573,8 @@ Partial Class FormChangeMod
         '
         Me.Label28.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label28.ForeColor = System.Drawing.Color.LemonChiffon
+        Me.Label28.BackColor = System.Drawing.Color.Transparent
+        Me.Label28.ForeColor = System.Drawing.Color.Navy
         Me.Label28.Location = New System.Drawing.Point(-2, 2)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(669, 45)

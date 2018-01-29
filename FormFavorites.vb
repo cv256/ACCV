@@ -81,7 +81,7 @@
             "<td style=""text-align:center;""><a href=""ACCEL"">0-100</a></td>" &
             "<td style=""text-align:right;""><a href=""SPEED"">Speed</a></td>" &
             "<td style=""text-align:right;""><a href=""TRACKLIKE"">LIKE</a></td>" &
-            "<td style=""text-align:right;""><a href=""TRACKLEN"">LEN</a></td>" &
+            "<td style=""text-align:right;""><a href=""TRACKLEN"">KMs</a></td>" &
         "</tr>"
         html &= "</thead>"
         html &= "<tbody>"
@@ -116,6 +116,16 @@
         Dim likeFrom As Integer = CInt(txtLikeFrom.Text)
         Dim likeTo As Integer = CInt(txtLikeTo.Text)
 
+        If Not IsNumeric(txtTrackLikeFrom.Text) Then txtTrackLikeFrom.Text = "0"
+        If Not IsNumeric(txtTrackLikeTo.Text) Then txtTrackLikeTo.Text = "10"
+        Dim trackLikeFrom As Integer = CInt(txtTrackLikeFrom.Text)
+        Dim trackLikeTo As Integer = CInt(txtTrackLikeTo.Text)
+
+        If Not IsNumeric(txtLenFrom.Text) Then txtLenFrom.Text = "0"
+        If Not IsNumeric(txtLenTo.Text) Then txtLenTo.Text = "9999"
+        Dim lenFrom As Integer = CInt(txtLenFrom.Text)
+        Dim lenTo As Integer = CInt(txtLenTo.Text)
+
         ' FILTER :
         Dim FavsOK As New List(Of Favorite)
         For Each f As Favorite In Favorites
@@ -124,6 +134,10 @@
                     Dim tmpTxt As String = txtTrackText.Text.ToUpper
                     If .Name.ToUpper.Contains(tmpTxt) = False AndAlso .PathConfig.ToUpper.Contains(tmpTxt) = False AndAlso .MyNotes.ToUpper.Contains(tmpTxt) = False Then Continue For
                 End If
+                If .Length < lenFrom Then Continue For
+                If lenTo <> 9999 AndAlso .Length / 1000 > lenTo Then Continue For
+                If .MyLike < tracklikeFrom Then Continue For
+                If .MyLike > trackLikeTo Then Continue For
             End With
             With f.Car
                 If txtCarText.TextLength > 0 Then

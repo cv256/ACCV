@@ -8,7 +8,7 @@
     'End Sub
 
 
-    Private Const FirstStep As String = "First set  CG_LOCATION=0.5  and all  Spring_Rates=999999  and visually set   DrawingY and DrawingZ  until the picture of the car looks horizontaly correct, but tires are apart from the car as if they were suspended, like when you lift up the car for changing the tires. Save this values of  DrawingY and DrawingZ  you will need them for some calculations, they are the default offsets."
+    'Private Const FirstStep As String = "First set  CG_LOCATION=0.5  and all  Spring_Rates=999999  and visually set   DrawingY and DrawingZ  until the picture of the car looks horizontaly correct, but tires are apart from the car as if they were suspended, like when you lift up the car for changing the tires. Save this values of  DrawingY and DrawingZ  you will need them for some calculations, they are the default offsets."
 
     Private Sub lbPath_Click(sender As Object, e As EventArgs) Handles lbPath.Click
         Shell($"Explorer.exe ""{lbPath.Text}""", AppWinStyle.NormalFocus)

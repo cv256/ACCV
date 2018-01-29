@@ -32,7 +32,6 @@ Partial Class FormTracks
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtLikeFrom = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label15 = New System.Windows.Forms.Label()
         Me.txtText = New System.Windows.Forms.TextBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.lbTotals = New System.Windows.Forms.Label()
@@ -56,9 +55,9 @@ Partial Class FormTracks
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(3, 53)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(49, 13)
+        Me.Label1.Size = New System.Drawing.Size(37, 13)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Length >"
+        Me.Label1.Text = "KMs >"
         '
         'txtLenFrom
         '
@@ -75,7 +74,7 @@ Partial Class FormTracks
         Me.txtLenTo.Name = "txtLenTo"
         Me.txtLenTo.Size = New System.Drawing.Size(43, 20)
         Me.txtLenTo.TabIndex = 4
-        Me.txtLenTo.Text = "?"
+        Me.txtLenTo.Text = "9999"
         Me.txtLenTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label2
@@ -122,15 +121,6 @@ Partial Class FormTracks
         Me.Label4.Size = New System.Drawing.Size(36, 13)
         Me.Label4.TabIndex = 5
         Me.Label4.Text = "Like >"
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(158, 52)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(15, 13)
-        Me.Label15.TabIndex = 21
-        Me.Label15.Text = "m"
         '
         'txtText
         '
@@ -183,7 +173,6 @@ Partial Class FormTracks
         Me.Controls.Add(Me.Label18)
         Me.Controls.Add(Me.txtText)
         Me.Controls.Add(Me.Label17)
-        Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.txtLikeTo)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtLikeFrom)
@@ -211,7 +200,6 @@ Partial Class FormTracks
     Friend WithEvents Label3 As Label
     Friend WithEvents txtLikeFrom As TextBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents Label15 As Label
     Friend WithEvents txtText As TextBox
     Friend WithEvents Label17 As Label
     Friend WithEvents lbTotals As Label

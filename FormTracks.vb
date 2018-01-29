@@ -30,7 +30,7 @@
             "<td style=""text-align:center;"">Map</td>" &
             "<td>Name</td>" &
             "<td style=""text-align:center;""><a href=""LIKE"">LIKE</a></td>" &
-            "<td style=""text-align:right;""><a href=""LEN"">Length</a></td>" &
+            "<td style=""text-align:right;""><a href=""LEN"">KMs</a></td>" &
             "<td style=""text-align:center;""><a href=""BESTLAP"">Best Lap</a></td>" &
             "<td style=""text-align:center;""><a href=""WIDTH"">Width</a></td>" &
             "<td style=""text-align:center;""><a href=""TAG"">Tags</a></td>" &
@@ -42,7 +42,7 @@
         html &= "</tr></thead><tbody>"
 
         If Not IsNumeric(txtLenFrom.Text) Then txtLenFrom.Text = "0"
-        If Not IsNumeric(txtLenTo.Text) Then txtLenTo.Text = "999999"
+        If Not IsNumeric(txtLenTo.Text) Then txtLenTo.Text = "9999"
         Dim lenFrom As Integer = CInt(txtLenFrom.Text)
         Dim lenTo As Integer = CInt(txtLenTo.Text)
 
@@ -58,7 +58,7 @@
                 If t.Name.ToUpper.Contains(tmpTxt) = False AndAlso t.PathConfig.ToUpper.Contains(tmpTxt) = False AndAlso t.MyNotes.ToUpper.Contains(tmpTxt) = False Then Continue For
             End If
             If t.Length < lenFrom Then Continue For
-            If lenTo <> 999999 AndAlso t.Length > lenTo Then Continue For
+            If lenTo <> 9999 AndAlso t.Length / 1000 > lenTo Then Continue For
             If t.MyLike < likeFrom Then Continue For
             If t.MyLike > likeTo Then Continue For
 
