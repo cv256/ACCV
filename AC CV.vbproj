@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7AC5E92A-9A82-4614-9B2C-53281B3DEEBB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>AC_CV.My.MyApplication</StartupObject>
+    <RootNamespace>AC_CV</RootNamespace>
+    <AssemblyName>AC CV</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PrimaryVersionType>AssemblyVersionAttribute</PrimaryVersionType>
+    <UpdateAssemblyVersion>True</UpdateAssemblyVersion>
+    <UpdateAssemblyFileVersion>True</UpdateAssemblyFileVersion>
+    <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
+    <AssemblyVersionSettings>None.None.Increment.None</AssemblyVersionSettings>
+    <AssemblyVersion>1.0.464</AssemblyVersion>
+    <AssemblyFileVersionSettings>None.None.Increment.None</AssemblyFileVersionSettings>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <TargetCulture>en-US</TargetCulture>
+    <PublisherName>Cláudio Vidal</PublisherName>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>AC CV.xml</DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>AC CV.xml</DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>On</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>Off</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DocumentationFile>AC CV.xml</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DocumentationFile>AC CV.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>00D840E754165DE2ADFCF64040681786C2FC8407</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>AC CV_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FormFavorites.Designer.vb">
+      <DependentUpon>FormFavorites.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormFavorites.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHistory.Designer.vb">
+      <DependentUpon>FormHistory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormHistory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TextBoxNumeric.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="chk3state.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Car.vb" />
+    <Compile Include="FormChangeMod.Designer.vb">
+      <DependentUpon>FormChangeMod.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormChangeMod.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReplays.Designer.vb">
+      <DependentUpon>FormReplays.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormReplays.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormResult.Designer.vb">
+      <DependentUpon>FormResult.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormResult.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSkins.Designer.vb">
+      <DependentUpon>FormSkins.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormSkins.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTracks.Designer.vb">
+      <DependentUpon>FormTracks.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormTracks.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCars.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCars.Designer.vb">
+      <DependentUpon>FormCars.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.vb">
+      <DependentUpon>FormMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEdit.Designer.vb">
+      <DependentUpon>FormEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSetup.Designer.vb">
+      <DependentUpon>FormSetup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormSetup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="History.vb" />
+    <Compile Include="INIFile.vb" />
+    <Compile Include="Module1.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Opponent.vb" />
+    <Compile Include="Track.vb" />
+    <Compile Include="ucOpponent.Designer.vb">
+      <DependentUpon>ucOpponent.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ucOpponent.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FormFavorites.resx">
+      <DependentUpon>FormFavorites.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChangeMod.resx">
+      <DependentUpon>FormChangeMod.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHistory.resx">
+      <DependentUpon>FormHistory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReplays.resx">
+      <DependentUpon>FormReplays.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormResult.resx">
+      <DependentUpon>FormResult.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSkins.resx">
+      <DependentUpon>FormSkins.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTracks.resx">
+      <DependentUpon>FormTracks.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCars.resx">
+      <DependentUpon>FormCars.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEdit.resx">
+      <DependentUpon>FormEdit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSetup.resx">
+      <DependentUpon>FormSetup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucOpponent.resx">
+      <DependentUpon>ucOpponent.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AC CV_TemporaryKey.pfx" />
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
