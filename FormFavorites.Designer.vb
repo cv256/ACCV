@@ -59,8 +59,6 @@ Partial Class FormFavorites
         Me.Label19 = New System.Windows.Forms.Label()
         Me.txtTrackText = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
-        Me.LinkSave = New System.Windows.Forms.LinkLabel()
-        Me.LinkManage = New System.Windows.Forms.LinkLabel()
         Me.delayedDrawHTML = New System.Windows.Forms.Timer(Me.components)
         Me.txtTrackLikeTo = New System.Windows.Forms.TextBox()
         Me.Label21 = New System.Windows.Forms.Label()
@@ -70,6 +68,8 @@ Partial Class FormFavorites
         Me.Label23 = New System.Windows.Forms.Label()
         Me.txtLenFrom = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
+        Me.btSave = New System.Windows.Forms.Button()
+        Me.btManage = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'WebBrowser1
@@ -401,34 +401,6 @@ Partial Class FormFavorites
         Me.Label20.TabIndex = 37
         Me.Label20.Text = "Text:"
         '
-        'LinkSave
-        '
-        Me.LinkSave.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LinkSave.BackColor = System.Drawing.Color.White
-        Me.LinkSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkSave.Location = New System.Drawing.Point(5, 3)
-        Me.LinkSave.Name = "LinkSave"
-        Me.LinkSave.Size = New System.Drawing.Size(163, 17)
-        Me.LinkSave.TabIndex = 39
-        Me.LinkSave.TabStop = True
-        Me.LinkSave.Text = "Save Current Set"
-        Me.LinkSave.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'LinkManage
-        '
-        Me.LinkManage.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LinkManage.BackColor = System.Drawing.Color.White
-        Me.LinkManage.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkManage.Location = New System.Drawing.Point(5, 20)
-        Me.LinkManage.Name = "LinkManage"
-        Me.LinkManage.Size = New System.Drawing.Size(163, 16)
-        Me.LinkManage.TabIndex = 40
-        Me.LinkManage.TabStop = True
-        Me.LinkManage.Text = "Manage Favoritizeds"
-        Me.LinkManage.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
         'delayedDrawHTML
         '
         Me.delayedDrawHTML.Interval = 600
@@ -505,12 +477,34 @@ Partial Class FormFavorites
         Me.Label24.TabIndex = 41
         Me.Label24.Text = "KMs >"
         '
+        'btSave
+        '
+        Me.btSave.ForeColor = System.Drawing.Color.DarkRed
+        Me.btSave.Location = New System.Drawing.Point(26, 0)
+        Me.btSave.Name = "btSave"
+        Me.btSave.Size = New System.Drawing.Size(124, 21)
+        Me.btSave.TabIndex = 49
+        Me.btSave.Text = "Save Current Set"
+        Me.btSave.UseVisualStyleBackColor = True
+        '
+        'btManage
+        '
+        Me.btManage.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.btManage.Location = New System.Drawing.Point(26, 19)
+        Me.btManage.Name = "btManage"
+        Me.btManage.Size = New System.Drawing.Size(124, 21)
+        Me.btManage.TabIndex = 50
+        Me.btManage.Text = "Manage Favoritizeds"
+        Me.btManage.UseVisualStyleBackColor = True
+        '
         'FormFavorites
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(32, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1356, 705)
+        Me.Controls.Add(Me.btManage)
+        Me.Controls.Add(Me.btSave)
         Me.Controls.Add(Me.txtTrackLikeTo)
         Me.Controls.Add(Me.Label21)
         Me.Controls.Add(Me.txtTrackLikeFrom)
@@ -519,8 +513,6 @@ Partial Class FormFavorites
         Me.Controls.Add(Me.Label23)
         Me.Controls.Add(Me.txtLenFrom)
         Me.Controls.Add(Me.Label24)
-        Me.Controls.Add(Me.LinkManage)
-        Me.Controls.Add(Me.LinkSave)
         Me.Controls.Add(Me.txtTrackText)
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.Label19)
@@ -602,8 +594,6 @@ Partial Class FormFavorites
     Friend WithEvents Label19 As Label
     Friend WithEvents txtTrackText As TextBox
     Friend WithEvents Label20 As Label
-    Friend WithEvents LinkSave As LinkLabel
-    Friend WithEvents LinkManage As LinkLabel
     Friend WithEvents delayedDrawHTML As Timer
     Friend WithEvents txtTrackLikeTo As TextBox
     Friend WithEvents Label21 As Label
@@ -613,4 +603,6 @@ Partial Class FormFavorites
     Friend WithEvents Label23 As Label
     Friend WithEvents txtLenFrom As TextBox
     Friend WithEvents Label24 As Label
+    Friend WithEvents btSave As Button
+    Friend WithEvents btManage As Button
 End Class

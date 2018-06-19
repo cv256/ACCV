@@ -83,19 +83,19 @@
 
     End Sub
 
-    Private Sub SetOpponents(sender As Object, e As EventArgs) Handles txtOpponents.TextChanged
+    Public Sub SetOpponents(sender As Object, e As EventArgs) Handles txtOpponents.TextChanged
         If Not Initialized Then Return
         If Not IsNumeric(txtOpponents.Text) OrElse CInt(txtOpponents.Text) < 0 OrElse CInt(txtOpponents.Text) > 30 Then
             txtOpponents.Text = "3"
             Return
         End If
-        OpponentCount = CInt(txtOpponents.Text)
         For i As Integer = 1 To pnlOpponents.Controls.Count ' fucking disposes:
             If pnlOpponents.Controls(pnlOpponents.Controls.Count - 1).BackgroundImage IsNot Nothing Then pnlOpponents.Controls(pnlOpponents.Controls.Count - 1).BackgroundImage.Dispose()
             pnlOpponents.Controls(pnlOpponents.Controls.Count - 1).BackgroundImage = Nothing
             pnlOpponents.Controls(pnlOpponents.Controls.Count - 1).Dispose()
         Next
         pnlOpponents.Controls.Clear()
+        OpponentCount = CInt(txtOpponents.Text)
         Dim lastBottom As Integer = 0
         For idx As Integer = 1 To OpponentCount
             Dim tmpSkin As String = ""
@@ -142,8 +142,13 @@
             Ini.Save()
 
             Ini = New INIFile With {.Encoding = System.Text.Encoding.ASCII}
+            Ini.Load(FileIO.SpecialDirectories.MyDocuments & "\Assetto Corsa\cfg\gameplay.ini")
+            Ini.Value("PYTHON", "ENABLE_PYTHON") = CStr(IIf(chkPython.Checked, "1", "0"))
+            Ini.Save()
+
+            Ini = New INIFile With {.Encoding = System.Text.Encoding.ASCII}
             Ini.Load(ACPath & "\system\cfg\assetto_corsa.ini")
-            Ini.Value("AC_APPS", "ENABLE_DEV_APPS") = CStr(IIf(chkPython.Checked, "1", "0"))
+            Ini.Value("AC_APPS", "ENABLE_DEV_APPS") = CStr(IIf(chkExtraApps.Checked, "1", "0"))
             Ini.Save()
 
             Ini = New INIFile With {.Encoding = System.Text.Encoding.ASCII}
@@ -288,6 +293,7 @@
         txtLaps.Text = pIni.Value("LASTUSED", "LAPS")
         chkPenalties.Checked = pIni.Value("LASTUSED", "PENALTIES") = "1"
         chkTyresOut.Checked = pIni.Value("LASTUSED", "TYRESOUT") = "1"
+        chkExtraApps.Checked = pIni.Value("LASTUSED", "EXTRAAPPS") = "1"
         chkPython.Checked = pIni.Value("LASTUSED", "PYTHON") = "1"
         cbWeather.SelectedIndex = cbWeather.FindString(pIni.Value("LASTUSED", "WEATHER"))
         cbTarmac.SelectedIndex = cbTarmac.FindString(pIni.Value("LASTUSED", "TARMAC"))
@@ -312,6 +318,7 @@
         pIni.Value("LASTUSED", "LAPS") = CInt(txtLaps.Text).ToString
         pIni.Value("LASTUSED", "PENALTIES") = CStr(IIf(chkPenalties.Checked, "1", "0"))
         pIni.Value("LASTUSED", "TYRESOUT") = CStr(IIf(chkTyresOut.Checked, "1", "0"))
+        pIni.Value("LASTUSED", "EXTRAAPPS") = CStr(IIf(chkExtraApps.Checked, "1", "0"))
         pIni.Value("LASTUSED", "PYTHON") = CStr(IIf(chkPython.Checked, "1", "0"))
         If Not cbWeather.SelectedItem Is Nothing Then pIni.Value("LASTUSED", "WEATHER") = cbWeather.SelectedItem.ToString
         If Not cbTarmac.SelectedItem Is Nothing Then pIni.Value("LASTUSED", "TARMAC") = cbTarmac.SelectedItem.ToString
@@ -339,6 +346,7 @@
         If e.Button <> MouseButtons.Right Then Exit Sub
         ShowResults()
     End Sub
+
 
 End Class
 

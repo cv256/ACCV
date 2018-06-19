@@ -278,7 +278,11 @@
         Me.Close()
     End Sub
 
-    Private Sub LinkSave_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkSave.LinkClicked
+    Private Sub delayedDrawHTML_Tick(sender As Object, e As EventArgs) Handles delayedDrawHTML.Tick
+        DrawHTML()
+    End Sub
+
+    Private Sub btSave_Click(sender As Object, e As EventArgs) Handles btSave.Click
         If Not FormMain.ValidateChoices() Then Return
         Dim tmpName As String, tmpPath As String
         tmpName = InputBox("What NAME do you want to give to this set of Selected Car, Selected Track and Opponents ?", "Save Favorite Set", SelectedCar.Name & " " & SelectedTrack.Name)
@@ -301,12 +305,9 @@
         Me.Close()
     End Sub
 
-    Private Sub LinkManage_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkManage.LinkClicked
+    Private Sub btManage_Click(sender As Object, e As EventArgs) Handles btManage.Click
         Diagnostics.Process.Start(MyIniPath)
         Me.Close()
     End Sub
 
-    Private Sub delayedDrawHTML_Tick(sender As Object, e As EventArgs) Handles delayedDrawHTML.Tick
-        DrawHTML()
-    End Sub
 End Class

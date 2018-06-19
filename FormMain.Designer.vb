@@ -39,6 +39,7 @@ Partial Class FormMain
         Me.pnlOpponents = New System.Windows.Forms.Panel()
         Me.txtOpponents = New System.Windows.Forms.TextBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.chkExtraApps = New System.Windows.Forms.CheckBox()
         Me.chkPython = New System.Windows.Forms.CheckBox()
         Me.chkPenalties = New System.Windows.Forms.CheckBox()
         Me.chkTyresOut = New System.Windows.Forms.CheckBox()
@@ -242,24 +243,37 @@ Partial Class FormMain
         Me.ToolTip1.IsBalloon = True
         Me.ToolTip1.ReshowDelay = 100
         '
+        'chkExtraApps
+        '
+        Me.chkExtraApps.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.chkExtraApps.AutoSize = True
+        Me.chkExtraApps.Location = New System.Drawing.Point(865, 630)
+        Me.chkExtraApps.Name = "chkExtraApps"
+        Me.chkExtraApps.Size = New System.Drawing.Size(77, 17)
+        Me.chkExtraApps.TabIndex = 30
+        Me.chkExtraApps.Text = "Extra Apps"
+        Me.ToolTip1.SetToolTip(Me.chkExtraApps, "this enables extra Kunos applications, the list that appear on the right side dur" &
+        "ing the game. They lower the performance of the game.")
+        Me.chkExtraApps.UseVisualStyleBackColor = True
+        '
         'chkPython
         '
         Me.chkPython.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.chkPython.AutoSize = True
-        Me.chkPython.Location = New System.Drawing.Point(928, 630)
+        Me.chkPython.Location = New System.Drawing.Point(948, 630)
         Me.chkPython.Name = "chkPython"
-        Me.chkPython.Size = New System.Drawing.Size(77, 17)
-        Me.chkPython.TabIndex = 30
-        Me.chkPython.Text = "Extra Apps"
-        Me.ToolTip1.SetToolTip(Me.chkPython, "this enables extra Python applications, the list that appear on the right side du" &
-        "ring the game. They lower the performance of the game.")
+        Me.chkPython.Size = New System.Drawing.Size(59, 17)
+        Me.chkPython.TabIndex = 34
+        Me.chkPython.Text = "Python"
+        Me.ToolTip1.SetToolTip(Me.chkPython, "this enables extra users (Python) applications, the list that appear on the right" &
+        " side during the game. They lower the performance of the game.")
         Me.chkPython.UseVisualStyleBackColor = True
         '
         'chkPenalties
         '
         Me.chkPenalties.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.chkPenalties.AutoSize = True
-        Me.chkPenalties.Location = New System.Drawing.Point(720, 630)
+        Me.chkPenalties.Location = New System.Drawing.Point(657, 630)
         Me.chkPenalties.Name = "chkPenalties"
         Me.chkPenalties.Size = New System.Drawing.Size(69, 17)
         Me.chkPenalties.TabIndex = 22
@@ -270,7 +284,7 @@ Partial Class FormMain
         '
         Me.chkTyresOut.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.chkTyresOut.AutoSize = True
-        Me.chkTyresOut.Location = New System.Drawing.Point(796, 630)
+        Me.chkTyresOut.Location = New System.Drawing.Point(733, 630)
         Me.chkTyresOut.Name = "chkTyresOut"
         Me.chkTyresOut.Size = New System.Drawing.Size(126, 17)
         Me.chkTyresOut.TabIndex = 23
@@ -436,8 +450,9 @@ Partial Class FormMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(32, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1004, 687)
-        Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.chkPython)
+        Me.Controls.Add(Me.TabControl1)
+        Me.Controls.Add(Me.chkExtraApps)
         Me.Controls.Add(Me.cbTarmac)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.cbWeather)
@@ -492,7 +507,7 @@ Partial Class FormMain
     Friend WithEvents cbWeather As ComboBox
     Friend WithEvents cbTarmac As ComboBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents chkPython As CheckBox
+    Friend WithEvents chkExtraApps As CheckBox
     Friend WithEvents cbGhost As ComboBox
     Friend WithEvents Label5 As Label
     Friend WithEvents chkSaveGhost As CheckBox
@@ -502,4 +517,5 @@ Partial Class FormMain
     Friend WithEvents tbTime As TabPage
     Friend WithEvents tbDrift As TabPage
     Friend WithEvents tbRace As TabPage
+    Friend WithEvents chkPython As CheckBox
 End Class

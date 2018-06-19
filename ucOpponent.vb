@@ -61,4 +61,22 @@ Public Class ucOpponent
         Opponents(_opponentIdx - 1).AILevel = CInt(txtLevel.Text)
     End Sub
 
+    Private Sub lbUp_Click(sender As Object, e As EventArgs) Handles lbUp.Click
+        If _opponentIdx <= 1 Then Return
+        Dim myOppo As Opponent
+        myOppo = Opponents(_opponentIdx - 1)
+        Opponents(_opponentIdx - 1) = Opponents(_opponentIdx - 2)
+        Opponents(_opponentIdx - 2) = myOppo
+        CType(Me.ParentForm, FormMain).SetOpponents(Me, Nothing)
+    End Sub
+
+    Private Sub lbDown_Click(sender As Object, e As EventArgs) Handles lbDown.Click
+        If _opponentIdx >= OpponentCount Then Return
+        Dim myOppo As Opponent
+        myOppo = Opponents(_opponentIdx - 1)
+        Opponents(_opponentIdx - 1) = Opponents(_opponentIdx)
+        Opponents(_opponentIdx) = myOppo
+        CType(Me.ParentForm, FormMain).SetOpponents(Me, Nothing)
+    End Sub
+
 End Class

@@ -26,6 +26,8 @@ Partial Class ucOpponent
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtLevel = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.lbUp = New System.Windows.Forms.Label()
+        Me.lbDown = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'lbCarName
@@ -69,6 +71,22 @@ Partial Class ucOpponent
         Me.Label2.TabIndex = 12
         Me.Label2.Text = "Level:"
         '
+        'lbUp
+        '
+        Me.lbUp.Location = New System.Drawing.Point(220, 0)
+        Me.lbUp.Name = "lbUp"
+        Me.lbUp.Size = New System.Drawing.Size(23, 13)
+        Me.lbUp.TabIndex = 16
+        Me.lbUp.Text = "Up"
+        '
+        'lbDown
+        '
+        Me.lbDown.Location = New System.Drawing.Point(240, 0)
+        Me.lbDown.Name = "lbDown"
+        Me.lbDown.Size = New System.Drawing.Size(23, 13)
+        Me.lbDown.TabIndex = 17
+        Me.lbDown.Text = "Dn"
+        '
         'ucOpponent
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -76,6 +94,8 @@ Partial Class ucOpponent
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(32, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Controls.Add(Me.lbDown)
+        Me.Controls.Add(Me.lbUp)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtLevel)
         Me.Controls.Add(Me.Label2)
@@ -93,4 +113,6 @@ Partial Class ucOpponent
     Friend WithEvents Label3 As Label
     Friend WithEvents txtLevel As TextBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents lbUp As Label
+    Friend WithEvents lbDown As Label
 End Class
