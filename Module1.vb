@@ -7,6 +7,7 @@
     Public FontSize As Integer = 9
     Public DefaultAILevel As Integer = 90
     Public Cars As New List(Of Car)
+    Public FilteredCars As List(Of Car)
     Public TagNames As New List(Of String)
     Public TagsClasses As New Dictionary(Of String, String)
     Public TagTranslations As New Dictionary(Of String, String)
@@ -397,5 +398,6 @@
         End If
         Return pDescr & "best"
     End Function
+
 
 End Module

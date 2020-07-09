@@ -29,7 +29,7 @@ Public Class ucOpponent
                         Me.BackgroundImage = New Bitmap(bitmapFile)
                     End Using
                 Catch ex As Exception
-                    'MsgBox("Couldnt find skin «" & .Skin & "» for car «" & .Car.Name & "»" & vbCrLf & vbCrLf & "Right-click to choose another skin" & vbCrLf & "Click to choose another car", MsgBoxStyle.Information)
+                    MsgBox("Couldnt find skin «" & .Skin & "» for car «" & .Car.Name & "»" & vbCrLf & vbCrLf & "Right-click to choose another skin" & vbCrLf & "Click to choose another car", MsgBoxStyle.Information)
                 End Try
                 Tooltip1.SetToolTip(Me, .Car.TooltipText(.Car.SelectedSkinPath, "Opponent " & _opponentIdx))
             End If
@@ -42,10 +42,14 @@ Public Class ucOpponent
                 Dim tmpfrm As New FormCars
                 tmpfrm.SelectedCar = .Car
                 If .Car IsNot Nothing Then tmpfrm.SelectedCar.SelectedSkinPath = .Skin
-                If tmpfrm.ShowDialog() <> DialogResult.OK Then Return
-                .Car = tmpfrm.SelectedCar
-                .Skin = tmpfrm.SelectedCar.SelectedSkinPath
-                ShowCar()
+                Select Case tmpfrm.ShowDialog(Me)
+                    Case DialogResult.Yes ' Random
+                        lbRnd_Click(Nothing, Nothing)
+                    Case DialogResult.OK
+                        .Car = tmpfrm.SelectedCar
+                        .Skin = tmpfrm.SelectedCar.SelectedSkinPath
+                        ShowCar()
+                End Select
             Else
                 Dim tmpfrm As New FormSkins With {.StartPosition = FormStartPosition.Manual, .Height = Me.ParentForm.Height, .Top = Me.ParentForm.Top, .Left = Me.ParentForm.Right - Me.Width}
                 If tmpfrm.ShowDialog(.Car, .Skin, Me) <> DialogResult.OK Then Return
@@ -77,6 +81,14 @@ Public Class ucOpponent
         Opponents(_opponentIdx - 1) = Opponents(_opponentIdx)
         Opponents(_opponentIdx) = myOppo
         CType(Me.ParentForm, FormMain).SetOpponents(Me, Nothing)
+    End Sub
+
+    Private Sub lbRnd_Click(sender As Object, e As EventArgs) Handles lbRnd.Click
+        Dim tmpCar As Car = Car.GetRandomCar()
+        If tmpCar Is Nothing Then Return
+        Opponents(_opponentIdx - 1).Car = tmpCar
+        Opponents(_opponentIdx - 1).Skin = tmpCar.GetRandomSkin()
+        ShowCar()
     End Sub
 
 End Class

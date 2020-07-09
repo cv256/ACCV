@@ -97,7 +97,7 @@
         Dim likeTo As Integer = CInt(txtLikeTo.Text)
 
         ' FILTER :
-        Dim CarsOK As New List(Of Car)
+        FilteredCars = New List(Of Car)
         For Each c As Car In Cars
             With c
                 If txtText.TextLength > 0 Then
@@ -143,15 +143,15 @@
                 Next
                 If Not Allowed Then Continue For
 
-                CarsOK.Add(c)
+                FilteredCars.Add(c)
             End With
         Next c
-        lbTotals.Text = "( " & CarsOK.Count & " / " & Cars.Count & " cars )"
+        lbTotals.Text = "( " & FilteredCars.Count & " / " & Cars.Count & " cars )"
 
         ' HTML :
         Dim tmpImg As String ' "" = Auto thumbnails
-        If CarsOK.Count > 55 AndAlso Not ckShowThumbnails.Checked Then tmpImg = "SELECT" ' No thumbnails
-        For Each c As Car In CarsOK
+        If FilteredCars.Count > 55 AndAlso Not ckShowThumbnails.Checked Then tmpImg = "SELECT" ' No thumbnails
+        For Each c As Car In FilteredCars
             With c
                 Dim tmpColor As String = "#000000"
                 If c.Equals(SelectedCar) Then
@@ -278,4 +278,14 @@
     Private Sub delayedDrawHTML_Tick(sender As Object, e As EventArgs) Handles delayedDrawHTML.Tick
         DrawHTML()
     End Sub
+
+    Private Sub btRnd_Click(sender As Object, e As EventArgs) Handles btRnd.Click
+        If FilteredCars.Count < 1 Then
+            MsgBox("For selecting a random car, your filtering must return at least one car")
+            Return
+        End If
+        DialogResult = DialogResult.Yes
+        Me.Close()
+    End Sub
+
 End Class

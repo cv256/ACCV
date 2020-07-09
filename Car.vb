@@ -63,4 +63,21 @@
         Return pPath.Substring(i + 1)
     End Function
 
+    Public Shared Function GetRandomCar() As Car
+        If FilteredCars Is Nothing OrElse FilteredCars.Count = 0 Then
+            MsgBox("For selecting a random car, your filtering must return at least one car")
+            Return Nothing
+        End If
+        Dim res As Car
+        Dim r As Integer = New Random(Now.Millisecond).Next(FilteredCars.Count)
+        res = FilteredCars(r)
+        Return res
+    End Function
+
+    Public Function GetRandomSkin() As String
+        If Skins Is Nothing OrElse Skins.Count = 0 Then Return ""
+        Dim r As Integer = New Random(Now.Millisecond).Next(Skins.Count)
+        Return Skins(r)
+    End Function
+
 End Class
