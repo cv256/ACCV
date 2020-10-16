@@ -40,7 +40,7 @@
         DrawHTML()
     End Sub
 
-    Private Sub DrawHTML()
+    Private Sub DrawHTML(Optional pRefreshFilteredCars As Boolean = False)
         If suspendDrawHTML Then Return
         suspendDrawHTML = True
         delayedDrawHTML.Enabled = False
@@ -60,7 +60,8 @@
             "<td style=""text-align:center;""><a href=""ACCEL"">0-100</a></td>" &
             "<td style=""text-align:right;""><a href=""SPEED"">Speed</a></td>" &
             "<td style=""text-align:right;""><a href=""DRIVEN"">Driven</a></td>" &
-            "<td style=""text-align:right;""><a href=""COG"">CoG F/R</a></td>"
+            "<td style=""text-align:right;""><a href=""COG"">CoG F/R</a></td>" &
+            "<td style=""text-align:right;""><a href=""LASTDATE"">Last Change</a></td>"
         For Each t As String In TagNames
             html &= "<td style=""text-align:center;""><a href=""TAG" & t & """>" & t & "</a></td>"
         Next
@@ -97,55 +98,58 @@
         Dim likeTo As Integer = CInt(txtLikeTo.Text)
 
         ' FILTER :
-        FilteredCars = New List(Of Car)
-        For Each c As Car In Cars
-            With c
-                If txtText.TextLength > 0 Then
-                    Dim tmpTxt As String = txtText.Text.ToUpper
-                    If .Name.ToUpper.Contains(tmpTxt) = False AndAlso .Brand.ToUpper.Contains(tmpTxt) = False AndAlso Car.Folder(.Path).ToUpper.Contains(tmpTxt) = False AndAlso .MyNotes.ToUpper.Contains(tmpTxt) = False Then Continue For
-                End If
-                If .HP < hpFrom Then Continue For
-                If hpTo <> 99999 AndAlso .HP > hpTo Then Continue For
-                If .Weight < kgFrom Then Continue For
-                If kgTo <> 99999 AndAlso .Weight > kgTo Then Continue For
-                If .HpPerTon < HpTonFrom Then Continue For
-                If HpTonTo <> 99999 AndAlso .HpPerTon > HpTonTo Then Continue For
-                If .Acceleration < AccelFrom Then Continue For
-                If AccelTo <> 99.9 AndAlso .Acceleration > AccelTo Then Continue For
-                If .TopSpeed < SpeedFrom Then Continue For
-                If SpeedTo <> 9999 AndAlso .TopSpeed > SpeedTo Then Continue For
-                If .MyLike < likeFrom Then Continue For
-                If .MyLike > likeTo Then Continue For
-                Select Case CType(Panel1.Controls("chkModded"), chk3state).CheckState
-                    Case CheckState.Checked
-                        If Not .Modded Then Continue For
-                    Case CheckState.Unchecked
-                        If .Modded Then Continue For
-                End Select
-                ' allows only:
-                Dim Allowed As Boolean = True
-                For Each t As Control In Panel1.Controls
-                    If Not TypeOf (t) Is chk3state Then Continue For
-                    If CType(t, chk3state).CheckState <> CheckState.Checked Then Continue For
-                    If t.Name.EndsWith("Modded") Then Continue For
-                    If Not .Tags.Contains(t.Name.ToUpper.Replace("CHK", "")) Then
-                        Allowed = False
-                        Exit For
+        If pRefreshFilteredCars OrElse FilteredCars Is Nothing OrElse FilteredCars.Count = 0 Then
+            FilteredCars = New List(Of Car)
+            For Each c As Car In Cars
+                With c
+                    If txtText.TextLength > 0 Then
+                        Dim tmpTxt As String = txtText.Text.ToUpper
+                        If .Name.ToUpper.Contains(tmpTxt) = False AndAlso .Brand.ToUpper.Contains(tmpTxt) = False AndAlso Car.Folder(.Path).ToUpper.Contains(tmpTxt) = False AndAlso .MyNotes.ToUpper.Contains(tmpTxt) = False Then Continue For
                     End If
-                Next
-                ' dont allow:
-                If Not Allowed Then Continue For
-                For Each t As String In .Tags
-                    If Panel1.Controls.ContainsKey("chk" & t) AndAlso CType(Panel1.Controls("chk" & t), chk3state).CheckState = CheckState.Unchecked Then
-                        Allowed = False
-                        Exit For
-                    End If
-                Next
-                If Not Allowed Then Continue For
+                    If .HP < hpFrom Then Continue For
+                    If hpTo <> 99999 AndAlso .HP > hpTo Then Continue For
+                    If .Weight < kgFrom Then Continue For
+                    If kgTo <> 99999 AndAlso .Weight > kgTo Then Continue For
+                    If .HpPerTon < HpTonFrom Then Continue For
+                    If HpTonTo <> 99999 AndAlso .HpPerTon > HpTonTo Then Continue For
+                    If .Acceleration < AccelFrom Then Continue For
+                    If AccelTo <> 99.9 AndAlso .Acceleration > AccelTo Then Continue For
+                    If .TopSpeed < SpeedFrom Then Continue For
+                    If SpeedTo <> 9999 AndAlso .TopSpeed > SpeedTo Then Continue For
+                    If .MyLike < likeFrom Then Continue For
+                    If .MyLike > likeTo Then Continue For
+                    Select Case CType(Panel1.Controls("chkModded"), chk3state).CheckState
+                        Case CheckState.Checked
+                            If Not .Modded Then Continue For
+                        Case CheckState.Unchecked
+                            If .Modded Then Continue For
+                    End Select
+                    ' allows only:
+                    Dim Allowed As Boolean = True
+                    For Each t As Control In Panel1.Controls
+                        If Not TypeOf (t) Is chk3state Then Continue For
+                        If CType(t, chk3state).CheckState <> CheckState.Checked Then Continue For
+                        If t.Name.EndsWith("Modded") Then Continue For
+                        If Not .Tags.Contains(t.Name.ToUpper.Replace("CHK", "")) Then
+                            Allowed = False
+                            Exit For
+                        End If
+                    Next
+                    ' dont allow:
+                    If Not Allowed Then Continue For
+                    For Each t As String In .Tags
+                        If Panel1.Controls.ContainsKey("chk" & t) AndAlso CType(Panel1.Controls("chk" & t), chk3state).CheckState = CheckState.Unchecked Then
+                            Allowed = False
+                            Exit For
+                        End If
+                    Next
+                    If Not Allowed Then Continue For
 
-                FilteredCars.Add(c)
-            End With
-        Next c
+                    FilteredCars.Add(c)
+                End With
+            Next c
+        End If
+
         lbTotals.Text = "( " & FilteredCars.Count & " / " & Cars.Count & " cars )"
 
         ' HTML :
@@ -179,7 +183,8 @@
         "<td style=""text-align:center;"">" & .Acceleration.ToString("0.0") & "<br/><br/>s</td>" &
         "<td style=""text-align:right;"">" & .TopSpeed & "<br/><br/>km/h</td>" &
         "<td style=""text-align:right;"">" & If(MyHistory.CarTracks(.Name) = 0, "", $"<a href=""HISTORYCAR{ .Name}"">{CInt(MyHistory.CarTotalTimeDriven(.Name).TotalMinutes)}<br/>minutes<br/><br/>{MyHistory.CarTracks(.Name)} tracks</a>") & "</td>" &
-        $"<td style=""text-align:right;"">{ .CoGFront}<br/>{ .CoGRear}</td>"
+        $"<td style=""text-align:right;"">{ .CoGFront}<br/>{ .CoGRear}</td>" &
+        $"<td style=""text-align:center;"">{ .LastDate.ToShortDateString}</td>"
                 ' tags:
                 For Each tagClass As String In TagNames
                     html &= "<td style=""text-align:center;"">" & .TagsByClass(tagClass, "<br/>") & "</td>"
@@ -206,35 +211,38 @@
         e.Cancel = True
         If e.Url.LocalPath = "HP" Then
             Cars.Sort(Function(f, h) f.HP.CompareTo(h.HP))
-            DrawHTML()
+            DrawHTML(pRefreshFilteredCars:=True)
         ElseIf e.Url.LocalPath = "LIKE" Then
             Cars.Sort(Function(f, h) h.MyLike.CompareTo(f.MyLike))
-            DrawHTML()
+            DrawHTML(pRefreshFilteredCars:=True)
         ElseIf e.Url.LocalPath = "BRAND" Then
             Cars.Sort(Function(f, h) f.Brand.CompareTo(h.Brand))
-            DrawHTML()
+            DrawHTML(pRefreshFilteredCars:=True)
         ElseIf e.Url.LocalPath = "KG" Then
             Cars.Sort(Function(f, h) f.Weight.CompareTo(h.Weight))
-            DrawHTML()
+            DrawHTML(pRefreshFilteredCars:=True)
         ElseIf e.Url.LocalPath = "HPTON" Then
             Cars.Sort(Function(f, h) f.HpPerTon.CompareTo(h.HpPerTon))
-            DrawHTML()
+            DrawHTML(pRefreshFilteredCars:=True)
         ElseIf e.Url.LocalPath = "ACCEL" Then
             Cars.Sort(Function(f, h) f.Acceleration.CompareTo(h.Acceleration))
-            DrawHTML()
+            DrawHTML(pRefreshFilteredCars:=True)
         ElseIf e.Url.LocalPath = "SPEED" Then
             Cars.Sort(Function(f, h) f.TopSpeed.CompareTo(h.TopSpeed))
-            DrawHTML()
+            DrawHTML(pRefreshFilteredCars:=True)
         ElseIf e.Url.LocalPath = "DRIVEN" Then
             Cars.Sort(Function(f, h) MyHistory.CarTotalTimeDriven(f.Name).CompareTo(MyHistory.CarTotalTimeDriven(h.Name)))
-            DrawHTML()
+            DrawHTML(pRefreshFilteredCars:=True)
         ElseIf e.Url.LocalPath = "COG" Then
             Cars.Sort(Function(f, h) f.CoGFront.CompareTo(h.CoGFront))
-            DrawHTML()
+            DrawHTML(pRefreshFilteredCars:=True)
+        ElseIf e.Url.LocalPath = "LASTDATE" Then
+            Cars.Sort(Function(f, h) h.LastDate.CompareTo(f.LastDate))
+            DrawHTML(pRefreshFilteredCars:=True)
         ElseIf e.Url.LocalPath.StartsWith("TAG") Then
             Dim tmpClass As String = e.Url.LocalPath.Replace("TAG", "")
             Cars.Sort(Function(f, h) f.TagsByClass(tmpClass, "").CompareTo(h.TagsByClass(tmpClass, "")))
-            DrawHTML()
+            DrawHTML(pRefreshFilteredCars:=True)
         ElseIf e.Url.LocalPath.StartsWith("CHANGEMOD") Then
             SelectedCar = Car.Find(e.Url.LocalPath.Replace("CHANGEMOD", ""))
             Dim tmpFrm As New FormChangeMod
@@ -254,7 +262,7 @@
             Me.Cursor = Cursors.WaitCursor
             MyIni.Save()
             Me.Cursor = Cursors.Default
-            DrawHTML()
+            DrawHTML(pRefreshFilteredCars:=True)
         ElseIf e.Url.LocalPath.StartsWith("SELECTSKIN") Then
             SelectedCar = Car.Find(e.Url.LocalPath.Replace("SELECTSKIN", ""))
             Dim tmpfrm As New FormSkins With {.StartPosition = FormStartPosition.Manual, .Height = Me.Height, .Top = Me.Top, .Left = Me.Left + 400}
@@ -276,16 +284,7 @@
     End Sub
 
     Private Sub delayedDrawHTML_Tick(sender As Object, e As EventArgs) Handles delayedDrawHTML.Tick
-        DrawHTML()
-    End Sub
-
-    Private Sub btRnd_Click(sender As Object, e As EventArgs) Handles btRnd.Click
-        If FilteredCars.Count < 1 Then
-            MsgBox("For selecting a random car, your filtering must return at least one car")
-            Return
-        End If
-        DialogResult = DialogResult.Yes
-        Me.Close()
+        DrawHTML(pRefreshFilteredCars:=True)
     End Sub
 
 End Class

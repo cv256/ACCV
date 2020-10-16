@@ -59,7 +59,6 @@ Partial Class FormCars
         Me.lbTotals = New System.Windows.Forms.Label()
         Me.ckShowThumbnails = New System.Windows.Forms.CheckBox()
         Me.delayedDrawHTML = New System.Windows.Forms.Timer(Me.components)
-        Me.btRnd = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'WebBrowser1
@@ -296,9 +295,9 @@ Partial Class FormCars
         Me.Panel1.AutoScroll = True
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(32, Byte), Integer))
         Me.Panel1.ForeColor = System.Drawing.Color.White
-        Me.Panel1.Location = New System.Drawing.Point(3, 207)
+        Me.Panel1.Location = New System.Drawing.Point(2, 207)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(167, 469)
+        Me.Panel1.Size = New System.Drawing.Size(170, 497)
         Me.Panel1.TabIndex = 26
         '
         'txtLikeTo
@@ -387,25 +386,12 @@ Partial Class FormCars
         '
         Me.delayedDrawHTML.Interval = 600
         '
-        'btRnd
-        '
-        Me.btRnd.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btRnd.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btRnd.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.btRnd.Location = New System.Drawing.Point(1, 682)
-        Me.btRnd.Name = "btRnd"
-        Me.btRnd.Size = New System.Drawing.Size(118, 23)
-        Me.btRnd.TabIndex = 36
-        Me.btRnd.Text = "Select RANDOM"
-        Me.btRnd.UseVisualStyleBackColor = True
-        '
         'FormCars
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(32, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1356, 705)
-        Me.Controls.Add(Me.btRnd)
         Me.Controls.Add(Me.ckShowThumbnails)
         Me.Controls.Add(Me.lbTotals)
         Me.Controls.Add(Me.Label18)
@@ -486,5 +472,4 @@ Partial Class FormCars
     Friend WithEvents lbTotals As Label
     Friend WithEvents ckShowThumbnails As CheckBox
     Friend WithEvents delayedDrawHTML As Timer
-    Friend WithEvents btRnd As Button
 End Class

@@ -261,16 +261,7 @@
         If e.Button = MouseButtons.Left Then
             Dim tmpfrm As New FormCars
             tmpfrm.SelectedCar = SelectedCar
-            Select Case tmpfrm.ShowDialog(Me)
-                Case DialogResult.Yes ' Random
-                    Dim tmpCar As Car = Car.GetRandomCar()
-                    If tmpCar IsNot Nothing Then
-                        SelectedCar = tmpCar
-                        SelectedCar.SelectedSkinPath = tmpCar.GetRandomSkin()
-                    End If
-                Case DialogResult.OK
-                    SelectedCar = tmpfrm.SelectedCar
-            End Select
+            If tmpfrm.ShowDialog(Me) = DialogResult.OK Then SelectedCar = tmpfrm.SelectedCar
         Else
             Dim tmpfrm As New FormSkins With {.StartPosition = FormStartPosition.Manual, .Height = Me.Height, .Top = Me.Top, .Left = Me.Left + e.X}
             If tmpfrm.ShowDialog(SelectedCar, SelectedCar.SelectedSkinPath, Me) <> DialogResult.OK Then Return
@@ -354,6 +345,13 @@
         ShowResults()
     End Sub
 
+    Private Sub lbRnd_Click(sender As Object, e As EventArgs) Handles lbRnd.Click
+        Dim tmpCar As Car = Car.GetRandomCar()
+        If tmpCar Is Nothing Then Return
+        SelectedCar = tmpCar
+        SelectedCar.SelectedSkinPath = tmpCar.GetRandomSkin()
+        ShowCar()
+    End Sub
 
 End Class
 

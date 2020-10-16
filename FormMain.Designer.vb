@@ -56,6 +56,8 @@ Partial Class FormMain
         Me.tbTime = New System.Windows.Forms.TabPage()
         Me.tbDrift = New System.Windows.Forms.TabPage()
         Me.tbRace = New System.Windows.Forms.TabPage()
+        Me.lbRnd = New System.Windows.Forms.Label()
+        Me.pictCar.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.tbTime.SuspendLayout()
         Me.tbRace.SuspendLayout()
@@ -68,6 +70,7 @@ Partial Class FormMain
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pictCar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.pictCar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.pictCar.Controls.Add(Me.lbRnd)
         Me.pictCar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pictCar.Location = New System.Drawing.Point(0, 0)
         Me.pictCar.Name = "pictCar"
@@ -77,6 +80,7 @@ Partial Class FormMain
         'btStart
         '
         Me.btStart.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btStart.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.btStart.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btStart.ForeColor = System.Drawing.Color.MidnightBlue
         Me.btStart.Location = New System.Drawing.Point(847, 661)
@@ -84,18 +88,19 @@ Partial Class FormMain
         Me.btStart.Size = New System.Drawing.Size(75, 23)
         Me.btStart.TabIndex = 1
         Me.btStart.Text = "START"
-        Me.btStart.UseVisualStyleBackColor = True
+        Me.btStart.UseVisualStyleBackColor = False
         '
         'btClose
         '
         Me.btClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btClose.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.btClose.ForeColor = System.Drawing.Color.DarkRed
         Me.btClose.Location = New System.Drawing.Point(928, 661)
         Me.btClose.Name = "btClose"
         Me.btClose.Size = New System.Drawing.Size(75, 23)
         Me.btClose.TabIndex = 4
         Me.btClose.Text = "End"
-        Me.btClose.UseVisualStyleBackColor = True
+        Me.btClose.UseVisualStyleBackColor = False
         '
         'Label1
         '
@@ -121,13 +126,14 @@ Partial Class FormMain
         'btSetup
         '
         Me.btSetup.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btSetup.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.btSetup.ForeColor = System.Drawing.Color.DarkGoldenrod
         Me.btSetup.Location = New System.Drawing.Point(12, 661)
         Me.btSetup.Name = "btSetup"
         Me.btSetup.Size = New System.Drawing.Size(75, 23)
         Me.btSetup.TabIndex = 14
         Me.btSetup.Text = "Configure"
-        Me.btSetup.UseVisualStyleBackColor = True
+        Me.btSetup.UseVisualStyleBackColor = False
         '
         'pictTrack
         '
@@ -294,24 +300,26 @@ Partial Class FormMain
         'btFav
         '
         Me.btFav.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btFav.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.btFav.ForeColor = System.Drawing.Color.DarkGreen
         Me.btFav.Location = New System.Drawing.Point(595, 661)
         Me.btFav.Name = "btFav"
         Me.btFav.Size = New System.Drawing.Size(75, 23)
         Me.btFav.TabIndex = 24
         Me.btFav.Text = "Favoritize"
-        Me.btFav.UseVisualStyleBackColor = True
+        Me.btFav.UseVisualStyleBackColor = False
         '
         'btReplays
         '
         Me.btReplays.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btReplays.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.btReplays.ForeColor = System.Drawing.Color.DarkGreen
         Me.btReplays.Location = New System.Drawing.Point(676, 661)
         Me.btReplays.Name = "btReplays"
         Me.btReplays.Size = New System.Drawing.Size(75, 23)
         Me.btReplays.TabIndex = 25
         Me.btReplays.Text = "Replays"
-        Me.btReplays.UseVisualStyleBackColor = True
+        Me.btReplays.UseVisualStyleBackColor = False
         '
         'Label2
         '
@@ -444,6 +452,17 @@ Partial Class FormMain
         Me.tbRace.TabIndex = 4
         Me.tbRace.Text = "Race"
         '
+        'lbRnd
+        '
+        Me.lbRnd.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.lbRnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lbRnd.ForeColor = System.Drawing.Color.Navy
+        Me.lbRnd.Location = New System.Drawing.Point(11, 20)
+        Me.lbRnd.Name = "lbRnd"
+        Me.lbRnd.Size = New System.Drawing.Size(30, 18)
+        Me.lbRnd.TabIndex = 19
+        Me.lbRnd.Text = "Rnd"
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -475,6 +494,7 @@ Partial Class FormMain
         Me.Name = "FormMain"
         Me.Text = "AC CV"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        Me.pictCar.ResumeLayout(False)
         Me.TabControl1.ResumeLayout(False)
         Me.tbTime.ResumeLayout(False)
         Me.tbTime.PerformLayout()
@@ -518,4 +538,5 @@ Partial Class FormMain
     Friend WithEvents tbDrift As TabPage
     Friend WithEvents tbRace As TabPage
     Friend WithEvents chkPython As CheckBox
+    Friend WithEvents lbRnd As Label
 End Class

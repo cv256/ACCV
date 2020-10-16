@@ -63,6 +63,7 @@ Partial Class FormResult
         'btOK
         '
         Me.btOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btOK.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.btOK.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btOK.ForeColor = System.Drawing.Color.DarkGreen
         Me.btOK.Location = New System.Drawing.Point(1251, 619)
@@ -70,7 +71,7 @@ Partial Class FormResult
         Me.btOK.Size = New System.Drawing.Size(75, 23)
         Me.btOK.TabIndex = 4
         Me.btOK.Text = "Continue"
-        Me.btOK.UseVisualStyleBackColor = True
+        Me.btOK.UseVisualStyleBackColor = False
         '
         'FormResult
         '

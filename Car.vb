@@ -8,6 +8,7 @@
     Public Weight As Integer
     Public TopSpeed As Integer
     Public Acceleration As Decimal
+    Public LastDate As Date
     Public Tags As New List(Of String)
     'Public BrandSize As Size
     Public SelectedSkinPath As String
@@ -34,10 +35,10 @@
             tmpTT = "No car selected for " & pDescr
         Else
             tmpTT = pDescr _
-                & vbCrLf & "Car  «" & Folder(Me.Path) & "»" _
-                & vbCrLf & "Skin  «" & pSkin & "»" _
-                & vbCrLf & vbCrLf & Me.HP.ToString & " HP     " & Me.Weight.ToString & " Kg     " & Me.HpPerTon.ToString & " HP/Ton" _
-                & vbCrLf & vbCrLf & Me.Acceleration.ToString & " s     " & Me.TopSpeed.ToString & " Km/h     " & Me.TagsByClass("TRACTION", "  ").ToUpper & "     " & Me.TagsByClass("GEARS", "  ").ToUpper
+                & vbCrLf & "Car  «" & Folder(Me.Path) & "»" & "     Skin  «" & pSkin & "»" _
+                & vbCrLf & vbCrLf & Me.HP.ToString & " HP     " & Me.Weight.ToString & " Kg     " & Me.HpPerTon.ToString & " HP/Ton     " & Me.Acceleration.ToString & " s     " & Me.TopSpeed.ToString & " Km/h" _
+                & vbCrLf & vbCrLf & Me.TagsByClass("TRACTION", "  ").ToUpper & "     " & Me.TagsByClass("GEARS", "  ").ToUpper & "     CoG=" & Me.CoGFront & "/" & Me.CoGRear _
+                & vbCrLf & vbCrLf & "Like: " & Me.MyLike & "     " & Me.MyNotes
         End If
         Return tmpTT & vbCrLf & vbCrLf & "Left-Click to select/manage cars" & vbCrLf & "Right-Click to select car skins"
     End Function

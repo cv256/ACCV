@@ -54,24 +54,26 @@ Partial Class FormEdit
         'btSetup
         '
         Me.btSetup.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btSetup.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.btSetup.ForeColor = System.Drawing.Color.DarkGoldenrod
         Me.btSetup.Location = New System.Drawing.Point(323, 166)
         Me.btSetup.Name = "btSetup"
         Me.btSetup.Size = New System.Drawing.Size(75, 23)
         Me.btSetup.TabIndex = 16
         Me.btSetup.Text = "Save"
-        Me.btSetup.UseVisualStyleBackColor = True
+        Me.btSetup.UseVisualStyleBackColor = False
         '
         'btClose
         '
         Me.btClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btClose.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.btClose.ForeColor = System.Drawing.Color.DarkRed
         Me.btClose.Location = New System.Drawing.Point(404, 166)
         Me.btClose.Name = "btClose"
         Me.btClose.Size = New System.Drawing.Size(75, 23)
         Me.btClose.TabIndex = 15
         Me.btClose.Text = "Cancel"
-        Me.btClose.UseVisualStyleBackColor = True
+        Me.btClose.UseVisualStyleBackColor = False
         '
         'Label2
         '

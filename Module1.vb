@@ -142,6 +142,7 @@
             tmpCar.Path = carPath
             Integer.TryParse(MyIni.Value("LIKES", Car.Folder(tmpCar.Path).ToUpper), tmpCar.MyLike)
             tmpCar.MyNotes = MyIni.Value("NOTES", Car.Folder(tmpCar.Path).ToUpper)
+            tmpCar.LastDate = System.IO.Directory.GetLastWriteTimeUtc(carPath)
             'tmpCar.BrandSize = GetImageSize(carPath & "\ui\badge.png")
             tmpCar.Modded = System.IO.Directory.Exists(carPath & "\data")
             If tmpCar.Modded AndAlso System.IO.File.Exists(carPath & "\data\suspensions.ini") Then

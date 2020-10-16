@@ -479,23 +479,25 @@ Partial Class FormFavorites
         '
         'btSave
         '
+        Me.btSave.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.btSave.ForeColor = System.Drawing.Color.DarkRed
         Me.btSave.Location = New System.Drawing.Point(26, 0)
         Me.btSave.Name = "btSave"
         Me.btSave.Size = New System.Drawing.Size(124, 21)
         Me.btSave.TabIndex = 49
         Me.btSave.Text = "Save Current Set"
-        Me.btSave.UseVisualStyleBackColor = True
+        Me.btSave.UseVisualStyleBackColor = False
         '
         'btManage
         '
+        Me.btManage.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.btManage.ForeColor = System.Drawing.Color.MidnightBlue
         Me.btManage.Location = New System.Drawing.Point(26, 19)
         Me.btManage.Name = "btManage"
         Me.btManage.Size = New System.Drawing.Size(124, 21)
         Me.btManage.TabIndex = 50
         Me.btManage.Text = "Manage Favoritizeds"
-        Me.btManage.UseVisualStyleBackColor = True
+        Me.btManage.UseVisualStyleBackColor = False
         '
         'FormFavorites
         '

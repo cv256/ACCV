@@ -74,7 +74,9 @@ Partial Class ucOpponent
         '
         'lbUp
         '
+        Me.lbUp.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lbUp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lbUp.ForeColor = System.Drawing.Color.Navy
         Me.lbUp.Location = New System.Drawing.Point(212, 0)
         Me.lbUp.Name = "lbUp"
         Me.lbUp.Size = New System.Drawing.Size(24, 18)
@@ -83,7 +85,9 @@ Partial Class ucOpponent
         '
         'lbDown
         '
+        Me.lbDown.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lbDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lbDown.ForeColor = System.Drawing.Color.Navy
         Me.lbDown.Location = New System.Drawing.Point(237, 0)
         Me.lbDown.Name = "lbDown"
         Me.lbDown.Size = New System.Drawing.Size(24, 18)
@@ -92,7 +96,9 @@ Partial Class ucOpponent
         '
         'lbRnd
         '
+        Me.lbRnd.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.lbRnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lbRnd.ForeColor = System.Drawing.Color.Navy
         Me.lbRnd.Location = New System.Drawing.Point(181, 0)
         Me.lbRnd.Name = "lbRnd"
         Me.lbRnd.Size = New System.Drawing.Size(30, 18)
