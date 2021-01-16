@@ -56,6 +56,7 @@ Partial Class FormChangeMod
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label28 = New System.Windows.Forms.Label()
         Me.tSpringRateRear = New AC_CV.TextBoxNumeric()
         Me.tSpringRateFront = New AC_CV.TextBoxNumeric()
         Me.tBumpSpringRateRear = New AC_CV.TextBoxNumeric()
@@ -72,7 +73,6 @@ Partial Class FormChangeMod
         Me.tY = New AC_CV.TextBoxNumeric()
         Me.tBaseyRear = New AC_CV.TextBoxNumeric()
         Me.tBaseyFront = New AC_CV.TextBoxNumeric()
-        Me.Label28 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -239,14 +239,18 @@ Partial Class FormChangeMod
         '
         'btCalcZ
         '
-        Me.btCalcZ.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.btCalcZ.BackColor = System.Drawing.Color.MediumBlue
+        Me.btCalcZ.FlatAppearance.BorderSize = 0
         Me.btCalcZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btCalcZ.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.btCalcZ.ForeColor = System.Drawing.Color.AliceBlue
         Me.btCalcZ.Location = New System.Drawing.Point(253, 240)
+        Me.btCalcZ.Margin = New System.Windows.Forms.Padding(0)
         Me.btCalcZ.Name = "btCalcZ"
         Me.btCalcZ.Size = New System.Drawing.Size(63, 20)
         Me.btCalcZ.TabIndex = 40
         Me.btCalcZ.Text = "Calculate"
+        Me.btCalcZ.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btCalcZ.UseMnemonic = False
         Me.btCalcZ.UseVisualStyleBackColor = False
         '
         'Label15
@@ -299,26 +303,34 @@ Partial Class FormChangeMod
         '
         'btCalcY
         '
-        Me.btCalcY.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.btCalcY.BackColor = System.Drawing.Color.MediumBlue
+        Me.btCalcY.FlatAppearance.BorderSize = 0
         Me.btCalcY.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btCalcY.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.btCalcY.ForeColor = System.Drawing.Color.AliceBlue
         Me.btCalcY.Location = New System.Drawing.Point(253, 264)
+        Me.btCalcY.Margin = New System.Windows.Forms.Padding(0)
         Me.btCalcY.Name = "btCalcY"
         Me.btCalcY.Size = New System.Drawing.Size(63, 20)
         Me.btCalcY.TabIndex = 47
         Me.btCalcY.Text = "Calculate"
+        Me.btCalcY.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btCalcY.UseMnemonic = False
         Me.btCalcY.UseVisualStyleBackColor = False
         '
         'btCalcRotation
         '
-        Me.btCalcRotation.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.btCalcRotation.BackColor = System.Drawing.Color.MediumBlue
+        Me.btCalcRotation.FlatAppearance.BorderSize = 0
         Me.btCalcRotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btCalcRotation.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.btCalcRotation.ForeColor = System.Drawing.Color.AliceBlue
         Me.btCalcRotation.Location = New System.Drawing.Point(253, 288)
+        Me.btCalcRotation.Margin = New System.Windows.Forms.Padding(0)
         Me.btCalcRotation.Name = "btCalcRotation"
         Me.btCalcRotation.Size = New System.Drawing.Size(63, 20)
         Me.btCalcRotation.TabIndex = 48
         Me.btCalcRotation.Text = "Calculate"
+        Me.btCalcRotation.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btCalcRotation.UseMnemonic = False
         Me.btCalcRotation.UseVisualStyleBackColor = False
         '
         'Label20
@@ -392,6 +404,19 @@ Partial Class FormChangeMod
         Me.Label27.Size = New System.Drawing.Size(69, 13)
         Me.Label27.TabIndex = 60
         Me.Label27.Text = "Spring Rate :"
+        '
+        'Label28
+        '
+        Me.Label28.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label28.BackColor = System.Drawing.Color.Transparent
+        Me.Label28.ForeColor = System.Drawing.Color.AliceBlue
+        Me.Label28.Location = New System.Drawing.Point(-2, 2)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(669, 45)
+        Me.Label28.TabIndex = 64
+        Me.Label28.Text = resources.GetString("Label28.Text")
+        Me.Label28.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'tSpringRateRear
         '
@@ -568,19 +593,6 @@ Partial Class FormChangeMod
         Me.tBaseyFront.Size = New System.Drawing.Size(37, 20)
         Me.tBaseyFront.TabIndex = 19
         Me.tBaseyFront.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label28
-        '
-        Me.Label28.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label28.BackColor = System.Drawing.Color.Transparent
-        Me.Label28.ForeColor = System.Drawing.Color.Navy
-        Me.Label28.Location = New System.Drawing.Point(-2, 2)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(669, 45)
-        Me.Label28.TabIndex = 64
-        Me.Label28.Text = resources.GetString("Label28.Text")
-        Me.Label28.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'FormChangeMod
         '

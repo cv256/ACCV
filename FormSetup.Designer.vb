@@ -47,6 +47,8 @@ Partial Class FormSetup
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.tSkids = New System.Windows.Forms.TrackBar()
+        Me.txtQuickBMS = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         CType(Me.tZ, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tY, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tX, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -186,7 +188,7 @@ Partial Class FormSetup
         'tZ
         '
         Me.tZ.LargeChange = 1
-        Me.tZ.Location = New System.Drawing.Point(144, 92)
+        Me.tZ.Location = New System.Drawing.Point(144, 94)
         Me.tZ.Maximum = 35
         Me.tZ.Name = "tZ"
         Me.tZ.Size = New System.Drawing.Size(256, 45)
@@ -195,7 +197,7 @@ Partial Class FormSetup
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(28, 95)
+        Me.Label9.Location = New System.Drawing.Point(28, 97)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(109, 13)
         Me.Label9.TabIndex = 28
@@ -204,7 +206,7 @@ Partial Class FormSetup
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(28, 133)
+        Me.Label10.Location = New System.Drawing.Point(28, 135)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(89, 13)
         Me.Label10.TabIndex = 30
@@ -213,7 +215,7 @@ Partial Class FormSetup
         'tY
         '
         Me.tY.LargeChange = 1
-        Me.tY.Location = New System.Drawing.Point(144, 130)
+        Me.tY.Location = New System.Drawing.Point(144, 132)
         Me.tY.Maximum = 35
         Me.tY.Name = "tY"
         Me.tY.Size = New System.Drawing.Size(256, 45)
@@ -222,7 +224,7 @@ Partial Class FormSetup
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(28, 171)
+        Me.Label11.Location = New System.Drawing.Point(28, 173)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(61, 13)
         Me.Label11.TabIndex = 32
@@ -231,7 +233,7 @@ Partial Class FormSetup
         'tX
         '
         Me.tX.LargeChange = 1
-        Me.tX.Location = New System.Drawing.Point(144, 168)
+        Me.tX.Location = New System.Drawing.Point(144, 170)
         Me.tX.Maximum = 35
         Me.tX.Name = "tX"
         Me.tX.Size = New System.Drawing.Size(256, 45)
@@ -249,7 +251,7 @@ Partial Class FormSetup
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(28, 211)
+        Me.Label7.Location = New System.Drawing.Point(28, 213)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(101, 13)
         Me.Label7.TabIndex = 35
@@ -258,7 +260,7 @@ Partial Class FormSetup
         'tS
         '
         Me.tS.LargeChange = 1
-        Me.tS.Location = New System.Drawing.Point(144, 207)
+        Me.tS.Location = New System.Drawing.Point(144, 209)
         Me.tS.Maximum = 30
         Me.tS.Name = "tS"
         Me.tS.Size = New System.Drawing.Size(256, 45)
@@ -272,9 +274,9 @@ Partial Class FormSetup
         Me.Label8.BackColor = System.Drawing.Color.Transparent
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.GreenYellow
-        Me.Label8.Location = New System.Drawing.Point(451, 38)
+        Me.Label8.Location = New System.Drawing.Point(451, 33)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(488, 354)
+        Me.Label8.Size = New System.Drawing.Size(488, 305)
         Me.Label8.TabIndex = 36
         Me.Label8.Text = "Any donation would... wow... make my day..." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "not specifically for the money, bu" &
     "t because" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "that would be really nice and correct" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and would motivate me to do mo" &
@@ -284,7 +286,7 @@ Partial Class FormSetup
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(28, 251)
+        Me.Label13.Location = New System.Drawing.Point(12, 255)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(112, 13)
         Me.Label13.TabIndex = 38
@@ -293,7 +295,7 @@ Partial Class FormSetup
         'tSkids
         '
         Me.tSkids.LargeChange = 1
-        Me.tSkids.Location = New System.Drawing.Point(144, 247)
+        Me.tSkids.Location = New System.Drawing.Point(128, 251)
         Me.tSkids.Maximum = 200
         Me.tSkids.Minimum = 2
         Me.tSkids.Name = "tSkids"
@@ -302,12 +304,34 @@ Partial Class FormSetup
         Me.tSkids.TickFrequency = 5
         Me.tSkids.Value = 2
         '
+        'txtQuickBMS
+        '
+        Me.txtQuickBMS.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtQuickBMS.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.txtQuickBMS.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories
+        Me.txtQuickBMS.Location = New System.Drawing.Point(258, 341)
+        Me.txtQuickBMS.Name = "txtQuickBMS"
+        Me.txtQuickBMS.Size = New System.Drawing.Size(681, 20)
+        Me.txtQuickBMS.TabIndex = 40
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(9, 344)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(243, 13)
+        Me.Label6.TabIndex = 39
+        Me.Label6.Text = "QuickBMS Folder (optional, for opening data.acd):"
+        '
         'FormSetup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(32, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(954, 547)
+        Me.Controls.Add(Me.txtQuickBMS)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.tSkids)
         Me.Controls.Add(Me.Label8)
@@ -369,4 +393,6 @@ Partial Class FormSetup
     Friend WithEvents Label8 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents tSkids As TrackBar
+    Friend WithEvents txtQuickBMS As TextBox
+    Friend WithEvents Label6 As Label
 End Class

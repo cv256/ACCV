@@ -4,6 +4,7 @@
     Public MyIni As INIFile
     Public MyHistory As History
     Public ACPath As String = "C:\Assetto Corsa"
+    Public QuickBMSPath As String = "C:\QuickBMS"
     Public FontSize As Integer = 9
     Public DefaultAILevel As Integer = 90
     Public Cars As New List(Of Car)
@@ -46,6 +47,9 @@
 
         If MyIni.Value("SETUP", "ACFOLDER") = "" Then MyIni.Value("SETUP", "ACFOLDER") = ACPath.ToString
         ACPath = MyIni.Value("SETUP", "ACFOLDER") & "\"
+
+        If MyIni.Value("SETUP", "QUICKBMSFOLDER") = "" Then MyIni.Value("SETUP", "QUICKBMSFOLDER") = QuickBMSPath.ToString
+        QuickBMSPath = MyIni.Value("SETUP", "QUICKBMSFOLDER") & "\"
 
         If MyIni.Value("SETUP", "FONTSIZE") = "" Then MyIni.Value("SETUP", "FONTSIZE") = FontSize.ToString
         FontSize = CInt(MyIni.Value("SETUP", "FONTSIZE"))
@@ -115,9 +119,7 @@
 
 
     Public Sub InitCars(pPath As String)
-
         For Each carPath As String In System.IO.Directory.EnumerateDirectories(pPath)
-
             'For Each fBak As String In System.IO.Directory.GetFiles(carPath, "*.bak")
             '    'Dim a As String = "", aCount As Integer = 0, aOK As String
             '    'For Each fOk As String In System.IO.Directory.GetFiles(carPath, System.IO.Path.GetFileNameWithoutExtension(fBak) & ".*")
@@ -136,94 +138,9 @@
             '    System.IO.File.Move(fBak.Replace(".bak", ""), fBak.Replace(".bak", "") & ".awesome") ' .kn5 -> .kn5awesome
             '    System.IO.File.Move(fBak, fBak.Replace(".bak", "")) ' .kn5.bak -> kn5
             'Next
-
             Dim tmpCar As New Car
+            tmpCar.Init(carPath)
             Cars.Add(tmpCar)
-            tmpCar.Path = carPath
-            Integer.TryParse(MyIni.Value("LIKES", Car.Folder(tmpCar.Path).ToUpper), tmpCar.MyLike)
-            tmpCar.MyNotes = MyIni.Value("NOTES", Car.Folder(tmpCar.Path).ToUpper)
-            tmpCar.LastDate = System.IO.Directory.GetLastWriteTimeUtc(carPath)
-            'tmpCar.BrandSize = GetImageSize(carPath & "\ui\badge.png")
-            tmpCar.Modded = System.IO.Directory.Exists(carPath & "\data")
-            If tmpCar.Modded AndAlso System.IO.File.Exists(carPath & "\data\suspensions.ini") Then
-                Dim tmpIni As New INIFile With {.Encoding = System.Text.Encoding.ASCII}
-                tmpIni.Load(carPath & "\data\suspensions.ini")
-                Dim tmpSng As Single
-                Single.TryParse(tmpIni.Value("FRONT", "BASEY"), Globalization.NumberStyles.Any, Globalization.CultureInfo.InvariantCulture, tmpSng)
-                tmpCar.CoGFront = (-tmpSng).ToString("0.00")
-                Single.TryParse(tmpIni.Value("REAR", "BASEY"), Globalization.NumberStyles.Any, Globalization.CultureInfo.InvariantCulture, tmpSng)
-                tmpCar.CoGRear = (-tmpSng).ToString("0.00")
-            End If
-            ' skins:
-            Try
-                For Each pathSkin As String In System.IO.Directory.EnumerateDirectories(carPath & "\skins\")
-                    Dim foldSkin As String = pathSkin.ToLower.Replace(carPath.ToLower & "\skins\", "")
-                    If String.IsNullOrEmpty(tmpCar.SelectedSkinPath) OrElse foldSkin = MyIni.Value("PREFEREDSKINS", Car.Folder(tmpCar.Path).ToUpper) Then ' tmpCar.SelectedSkinSize.Height <= 0 
-                        tmpCar.SelectedSkinPath = foldSkin ' Car skin preview.jpg 1024 x 576 racio 1,77777777777778
-                        'tmpCar.SelectedSkinSize = GetImageSize(pathSkin & "\preview.jpg")
-                    End If
-                    tmpCar.Skins.Add(foldSkin)
-                Next
-            Catch ex As Exception
-                MsgBox(ex.Message)
-            End Try
-
-            ' read ui_car.json:
-            Dim ui As String = ""
-            Try
-                Using sr As New System.IO.StreamReader(carPath & "\ui\ui_car.json")
-                    ui = sr.ReadToEnd()
-                End Using
-            Catch ex As Exception
-            End Try
-            tmpCar.Name = GetJsonString(ui, "name")
-            tmpCar.Brand = GetJsonString(ui, "brand")
-            ' HP
-            Dim tmpHP As String = GetJsonString(ui, "bhp").Replace("+", "").Replace(" ", "")
-            Dim tmpHPi As Integer
-            For tmpHPi = 0 To tmpHP.Length - 1
-                If Not IsNumeric(tmpHP(tmpHPi)) Then Exit For
-            Next
-            If tmpHPi > 0 Then tmpCar.HP = CInt(tmpHP.Substring(0, tmpHPi))
-            ' weight
-            tmpHP = GetJsonString(ui, "weight").ToUpper.Replace("+", "").Replace(" ", "")
-            For tmpHPi = 0 To tmpHP.Length - 1
-                If Not IsNumeric(tmpHP(tmpHPi)) Then Exit For
-            Next
-            If tmpHPi > 0 Then tmpCar.Weight = CInt(tmpHP.Substring(0, tmpHPi))
-            ' Accel
-            tmpHP = GetJsonString(ui, "acceleration").ToUpper.Replace("+", "").Replace(" ", "").Replace(", ", System.Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator).Replace(".", System.Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator)
-            For tmpHPi = 0 To tmpHP.Length - 1
-                If Not IsNumeric(tmpHP(tmpHPi)) AndAlso tmpHP(tmpHPi) <> System.Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator Then Exit For
-            Next
-            If tmpHPi > 0 Then tmpCar.Acceleration = CDec(tmpHP.Substring(0, tmpHPi))
-            ' Speed
-            tmpHP = GetJsonString(ui, "topspeed").ToUpper.Replace("+", "").Replace(" ", "")
-            For tmpHPi = 0 To tmpHP.Length - 1
-                If Not IsNumeric(tmpHP(tmpHPi)) Then Exit For
-            Next
-            If tmpHPi > 0 Then tmpCar.TopSpeed = CInt(tmpHP.Substring(0, tmpHPi))
-            ' tags:
-            For Each thisCarTag As String In GetJsonString(ui, "tags").Split(","c)
-                thisCarTag = thisCarTag.Replace("""", "").Replace(vbCr, "").Replace(vbLf, "").Replace(vbTab, "").Replace(" ", "").ToUpper
-                If thisCarTag.StartsWith("#A") Then thisCarTag = "#A" & Strings.Right(("00" & thisCarTag.Replace("#A", "")), 2)
-                For Each tr As KeyValuePair(Of String, String) In TagTranslations
-                    thisCarTag = thisCarTag.Replace(tr.Key, tr.Value)
-                Next
-                If String.IsNullOrEmpty(thisCarTag) Then Continue For
-                If tmpCar.Tags.Contains(thisCarTag) Then Continue For
-
-                If Not TagsClasses.ContainsKey(thisCarTag) Then Continue For
-                'If Not TagsClasses.ContainsKey(thisCarTag) Then
-                '    Dim thisCarTagClass As String = "Others" ' as tags que nao estiverem configuradas no INI cria seccao Others
-                '    If thisCarTag.StartsWith("#A") Then thisCarTagClass = "A" ' se a tag é #A69 poe-a na seccao A, nao é preciso configurar no INI as tags começadas por #A
-                '    If Not TagNames.Contains(thisCarTagClass) Then TagNames.Add(thisCarTagClass)
-                '    TagsClasses.Add(thisCarTag, thisCarTagClass)
-                'End If
-
-                tmpCar.Tags.Add(thisCarTag)
-
-            Next
         Next
     End Sub
 
@@ -259,62 +176,10 @@
             'MsgBox("InitTrack: «" & fold & "» contain's file «ui_track.json», good...")
         End If
         Dim tmpTrack As New Track
+        tmpTrack.Init(fold)
         Tracks.Add(tmpTrack)
-        tmpTrack.Path = fold
-        Dim i As Integer = fold.ToLower.LastIndexOf("\ui\")
-        If i >= 0 Then
-            tmpTrack.Config = fold.Substring(i + 4)
-        End If
-        tmpTrack.Modded = System.IO.File.Exists(fold.Substring(0, fold.ToLower.LastIndexOf("\ui")) & "\MOD.txt")
-        If IsNumeric(MyIni.Value("TRACKLIKES", tmpTrack.PathConfig.ToUpper)) Then tmpTrack.MyLike = CInt(MyIni.Value("TRACKLIKES", tmpTrack.PathConfig.ToUpper))
-        tmpTrack.MyNotes = MyIni.Value("TRACKNOTES", tmpTrack.PathConfig.ToUpper)
-        tmpTrack.MapPath = fold & "\outline.png"
-        'tmpTrack.MapSize = GetImageSize(tmpTrack.MapPath)
-        If Not IO.File.Exists(tmpTrack.MapPath) Then ' tmpTrack.MapSize.Height = 0 
-            tmpTrack.MapPath = fold & "\map.png"
-            'tmpTrack.MapSize = GetImageSize(tmpTrack.MapPath)
-        End If
-        tmpTrack.FotoPath = fold & "\preview.png"
-        'tmpTrack.FotoSize = GetImageSize(tmpTrack.FotoPath)
-        ' read ui_track.json:
-        Dim ui As String = ""
-        Try
-            Using sr As New System.IO.StreamReader(fold & "\ui_track.json")
-                ui = sr.ReadToEnd()
-            End Using
-        Catch ex As Exception
-        End Try
-        tmpTrack.Name = GetJsonString(ui, "name").Trim(" "c)
-        If String.IsNullOrEmpty(tmpTrack.Name) Then tmpTrack.Name = tmpTrack.PathConfig.Replace(".", " ")
-        tmpTrack.Width = GetJsonString(ui, "width").Trim(" "c)
-        tmpTrack.Country = GetJsonString(ui, "country").Trim(" "c)
-        ' lenght
-        Dim tmpHP As String = GetJsonString(ui, "length").Replace(",", "").Replace(".", "").Replace(" ", "").Replace("m", "")
-        Dim tmpHPi As Integer
-        For tmpHPi = 0 To tmpHP.Length - 1
-            If Not IsNumeric(tmpHP(tmpHPi)) Then Exit For
-        Next
-        If tmpHPi > 0 Then tmpTrack.Length = CInt(tmpHP.Substring(0, tmpHPi))
-        If tmpHP.ToUpper.Contains("K"c) AndAlso tmpHPi < 1000 Then tmpTrack.Length *= 1000
-        ' tags:
-        For Each thisTrackTag As String In GetJsonString(ui, "tags").Split(","c)
-            thisTrackTag = thisTrackTag.Replace("""", "").Replace(vbCr, "").Replace(vbLf, "").Replace(vbTab, "").Replace(" ", "") '.ToUpper
-            'For Each tr As KeyValuePair(Of String, String) In TagTranslations
-            '    thisTrackTag = thisTrackTag.Replace(tr.Key, tr.Value)
-            'Next
-            If String.IsNullOrEmpty(thisTrackTag) Then Continue For
-            If tmpTrack.Tags.Contains(thisTrackTag) Then Continue For
-
-            'If Not TagsClasses.ContainsKey(thisTrackTag) Then
-            '    Dim thisCarTagClass As String = "Others" ' as tags que nao estiverem configuradas no INI cria seccao Others
-            '    If thisTrackTag.StartsWith("#A") Then thisCarTagClass = "A" ' se a tag é #A69 poe-a na seccao A, nao é preciso configurar no INI as tags começadas por #A
-            '    If Not TagNames.Contains(thisCarTagClass) Then TagNames.Add(thisCarTagClass)
-            '    TagsClasses.Add(thisTrackTag, thisCarTagClass)
-            'End If
-
-            tmpTrack.Tags.Add(thisTrackTag)
-        Next
     End Sub
+
 
     Private Function GetImageSize(pPath As String) As Size
         Dim res As New Size

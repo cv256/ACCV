@@ -4,6 +4,7 @@
         lbVersion.Text = "v " & My.Application.Info.Version.Major & "." & My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Build
         lnkINI.Text = MyIniPath
         txtACFolder.Text = ACPath
+        txtQuickBMS.Text = QuickBMSPath
         txtFontSize.Text = FontSize.ToString
         tZ.Value = CInt(MoveZ)
         tY.Value = CInt(MoveY)
@@ -20,6 +21,7 @@
 
     Private Sub btSetup_Click(sender As Object, e As EventArgs) Handles btSetup.Click
         MyIni.Value("SETUP", "ACFOLDER") = txtACFolder.Text.Replace("""", "").Trim("\"c)
+        MyIni.Value("SETUP", "QUICKBMSFOLDER") = txtQuickBMS.Text.Replace("""", "").Trim("\"c)
         MyIni.Value("SETUP", "FONTSIZE") = txtFontSize.Text
         MyIni.Value("SETUP", "MOVEZ") = tZ.Value.ToString
         MyIni.Value("SETUP", "MOVEY") = tY.Value.ToString

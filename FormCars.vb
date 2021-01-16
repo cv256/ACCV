@@ -13,6 +13,10 @@
         Panel1.Controls.Add(ck) : lastTop = ck.Bottom
         AddHandler ck.CheckStateChanged, AddressOf FiltersChanged
 
+        ck = New chk3state With {.Name = "chkACD", .Text = "ACD", .Top = lastTop, .AutoSize = True}
+        Panel1.Controls.Add(ck) : lastTop = ck.Bottom
+        AddHandler ck.CheckStateChanged, AddressOf FiltersChanged
+
         For Each tagClass As String In TagNames
             Dim tj As New List(Of String)
             For Each c As Car In Cars
@@ -124,12 +128,18 @@
                         Case CheckState.Unchecked
                             If .Modded Then Continue For
                     End Select
+                    Select Case CType(Panel1.Controls("chkACD"), chk3state).CheckState
+                        Case CheckState.Checked
+                            If Not .ACD Then Continue For
+                        Case CheckState.Unchecked
+                            If .ACD Then Continue For
+                    End Select
                     ' allows only:
                     Dim Allowed As Boolean = True
                     For Each t As Control In Panel1.Controls
                         If Not TypeOf (t) Is chk3state Then Continue For
                         If CType(t, chk3state).CheckState <> CheckState.Checked Then Continue For
-                        If t.Name.EndsWith("Modded") Then Continue For
+                        If t.Name.EndsWith("Modded") OrElse t.Name.EndsWith("ACD") Then Continue For
                         If Not .Tags.Contains(t.Name.ToUpper.Replace("CHK", "")) Then
                             Allowed = False
                             Exit For
@@ -173,9 +183,11 @@
         "<td id=""EDITCAR" & Car.Folder(.Path) & """>" & .Brand & "</td>" &
         "<td><a href=""SELECTCAR" & Car.Folder(.Path) & """>" & If(tmpImg Is Nothing, "<img title=""Click to select this Car"" src=""" & .Path & "\skins\" & .SelectedSkinPath & "\preview.jpg" & """ style=""width:" & PreviewWidth & "px;"">", tmpImg) & "</a></td>" &
         "<td><b>" & .Name & "</b>" &
-        "<br/><a href=""EDITCAR" & Car.Folder(.Path) & """ title=""Click to edit your notes & likes"">" & CStr(IIf(String.IsNullOrEmpty(.MyNotes), "(click to edit your notes)", .MyNotes)) & "</a></td>" &
+        "<br/><a href=""EDITCAR" & Car.Folder(.Path) & """ title=""Click to edit your notes & likes"">" & CStr(IIf(String.IsNullOrEmpty(.MyNotes), "(click to edit your notes)", .MyNotes)) & "</a>" &
+        "<br/><small><a href=""EXPLORER" & Car.Folder(.Path) & """ title=""Click to open this car folder"">" & Car.Folder(.Path) & "</a></small></td>" &
         "<td style=""text-align:center;""><a href=""EDITCAR" & Car.Folder(.Path) & """ title=""Click to edit your notes & likes""><b>" & .MyLike & "</b></a>" &
             CStr(IIf(.Modded, "<br/><br/><a href=""CHANGEMOD" & Car.Folder(.Path) & """ title=""Click to CHANGE this MOD"">MOD</a>", "")) &
+            CStr(IIf(.ACD, "<br/><br/><a href=""CHANGEACD" & Car.Folder(.Path) & """ title=""Click to CHANGE this MOD"">ACD</a>", "")) &
             "<br/><br/><a href=""SELECTSKIN" & Car.Folder(.Path) & """ title=""Click to select skin"">" & .Skins.Count & " skins</a></td>" &
         "<td style=""text-align:right;"">" & .HP & "<br/><br/>hp</td>" &
         "<td style=""text-align:right;"">" & .Weight & "<br/><br/>kg</td>" &
@@ -243,11 +255,20 @@
             Dim tmpClass As String = e.Url.LocalPath.Replace("TAG", "")
             Cars.Sort(Function(f, h) f.TagsByClass(tmpClass, "").CompareTo(h.TagsByClass(tmpClass, "")))
             DrawHTML(pRefreshFilteredCars:=True)
+
         ElseIf e.Url.LocalPath.StartsWith("CHANGEMOD") Then
             SelectedCar = Car.Find(e.Url.LocalPath.Replace("CHANGEMOD", ""))
             Dim tmpFrm As New FormChangeMod
             tmpFrm.Init(SelectedCar)
             If tmpFrm.ShowDialog <> DialogResult.OK Then Return
+
+        ElseIf e.Url.LocalPath.StartsWith("CHANGEACD") Then
+            SelectedCar = Car.Find(e.Url.LocalPath.Replace("CHANGEACD", ""))
+            If Not SelectedCar.OpenACD() Then Return
+
+        ElseIf e.Url.LocalPath.StartsWith("EXPLORER") Then
+            SelectedCar = Car.Find(e.Url.LocalPath.Replace("EXPLORER", ""))
+            SelectedCar.ExploreFolder()
 
         ElseIf e.Url.LocalPath.StartsWith("EDITCAR") Then
             SelectedCar = Car.Find(e.Url.LocalPath.Replace("EDITCAR", ""))
@@ -263,20 +284,25 @@
             MyIni.Save()
             Me.Cursor = Cursors.Default
             DrawHTML(pRefreshFilteredCars:=True)
+
         ElseIf e.Url.LocalPath.StartsWith("SELECTSKIN") Then
             SelectedCar = Car.Find(e.Url.LocalPath.Replace("SELECTSKIN", ""))
             Dim tmpfrm As New FormSkins With {.StartPosition = FormStartPosition.Manual, .Height = Me.Height, .Top = Me.Top, .Left = Me.Left + 400}
             If tmpfrm.ShowDialog(SelectedCar, SelectedCar.SelectedSkinPath, Me) <> DialogResult.OK Then Return
             SelectedCar.SelectedSkinPath = tmpfrm.SelectedSkin
             DrawHTML()
+
         ElseIf e.Url.LocalPath.StartsWith("SELECTCAR") Then
             Me.SelectedCar = Car.Find(e.Url.LocalPath.Replace("SELECTCAR", ""))
             DialogResult = DialogResult.OK
             Me.Close()
+
         ElseIf e.Url.LocalPath.StartsWith("HISTORYCAR") Then
             Dim f As New FormHistory
             f.Show(MyHistory, pTrack:="", pCar:=e.Url.LocalPath.Replace("HISTORYCAR", ""))
+
         End If
+
     End Sub
 
     Private Sub ckShowThumbnails_CheckedChanged(sender As Object, e As EventArgs) Handles ckShowThumbnails.CheckedChanged

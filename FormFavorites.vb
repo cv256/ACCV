@@ -29,6 +29,10 @@
         Panel1.Controls.Add(ck) : lastTop = ck.Bottom
         AddHandler ck.CheckStateChanged, AddressOf FiltersChanged
 
+        ck = New chk3state With {.Name = "chkACD", .Text = "ACD", .Top = lastTop, .AutoSize = True}
+        Panel1.Controls.Add(ck) : lastTop = ck.Bottom
+        AddHandler ck.CheckStateChanged, AddressOf FiltersChanged
+
         For Each tagClass As String In TagNames
             Dim tj As New List(Of String)
             For Each c As Car In Cars
@@ -162,12 +166,18 @@
                     Case CheckState.Unchecked
                         If .Modded Then Continue For
                 End Select
+                Select Case CType(Panel1.Controls("chkACD"), chk3state).CheckState
+                    Case CheckState.Checked
+                        If Not .ACD Then Continue For
+                    Case CheckState.Unchecked
+                        If .ACD Then Continue For
+                End Select
                 ' allows only:
                 Dim Allowed As Boolean = True
                 For Each t As Control In Panel1.Controls
                     If Not TypeOf (t) Is chk3state Then Continue For
                     If CType(t, chk3state).CheckState <> CheckState.Checked Then Continue For
-                    If t.Name.EndsWith("Modded") Then Continue For
+                    If t.Name.EndsWith("Modded") OrElse t.Name.EndsWith("ACD") Then Continue For
                     If Not .Tags.Contains(t.Name.ToUpper.Replace("CHK", "")) Then
                         Allowed = False
                         Exit For
