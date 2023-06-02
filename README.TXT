@@ -12,12 +12,12 @@ So my launcher:
 - quicly save/watch replays
 - when you end a race it shows a graphic of each car's position along the race time.
 
-You can have ACCV.exe wherever you want, no install needed, just this extremely small executable (just 100Kb, the original launcher has more than 5000Kb)
+You can have ACCV.exe wherever you want, no install needed, just this extremely small executable (just 180Kb, the original launcher has more than 5000Kb)
 
 This version is just for 64bit, contact me if you need 32bit version.
-It requires Net Framework 4.5.2. 99% of computers wil allready have it, otherwise get it from Microsoft.
+It requires Net Framework 4.8. 99% of computers wil allready have it, otherwise get it from Microsoft.
 
-You can even run ACCV.exe and AssettoCorsa.exe (the original launcher) at the same time, no problem, they both work, and they both invoke acs.exe (wich is the original main game)
+You can even run ACCV.exe and AssettoCorsa.exe (the original launcher) or Content Manager at the same time, no problem, they both work, and they both invoke acs.exe (wich is the original main game).
 
 
-https://1drv.ms/f/s!AoZxbipqypDLig0hWGQuYHq6S5TL
+https://1drv.ms/f/s!AoZxbipqypDLoXkmExmhSPJnn_FQ?e=zdbSmv
