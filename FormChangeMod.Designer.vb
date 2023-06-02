@@ -73,6 +73,8 @@ Partial Class FormChangeMod
         Me.tY = New AC_CV.TextBoxNumeric()
         Me.tBaseyRear = New AC_CV.TextBoxNumeric()
         Me.tBaseyFront = New AC_CV.TextBoxNumeric()
+        Me.lRotation = New System.Windows.Forms.Label()
+        Me.lZ = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -594,12 +596,32 @@ Partial Class FormChangeMod
         Me.tBaseyFront.TabIndex = 19
         Me.tBaseyFront.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
+        'lRotation
+        '
+        Me.lRotation.AutoSize = True
+        Me.lRotation.Location = New System.Drawing.Point(215, 291)
+        Me.lRotation.Name = "lRotation"
+        Me.lRotation.Size = New System.Drawing.Size(28, 13)
+        Me.lRotation.TabIndex = 65
+        Me.lRotation.Text = "0.00"
+        '
+        'lZ
+        '
+        Me.lZ.AutoSize = True
+        Me.lZ.Location = New System.Drawing.Point(215, 243)
+        Me.lZ.Name = "lZ"
+        Me.lZ.Size = New System.Drawing.Size(28, 13)
+        Me.lZ.TabIndex = 66
+        Me.lZ.Text = "0.00"
+        '
         'FormChangeMod
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(16, Byte), Integer), CType(CType(16, Byte), Integer), CType(CType(32, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(666, 442)
+        Me.Controls.Add(Me.lZ)
+        Me.Controls.Add(Me.lRotation)
         Me.Controls.Add(Me.Label28)
         Me.Controls.Add(Me.Label26)
         Me.Controls.Add(Me.tSpringRateRear)
@@ -708,4 +730,6 @@ Partial Class FormChangeMod
     Friend WithEvents tSpringRateFront As TextBoxNumeric
     Friend WithEvents Label27 As Label
     Friend WithEvents Label28 As Label
+    Friend WithEvents lRotation As Label
+    Friend WithEvents lZ As Label
 End Class

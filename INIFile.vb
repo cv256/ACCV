@@ -53,6 +53,7 @@ Public Class INIFile
         ' read the file in one single operation
         'On Error GoTo ErrorHandler
         If Not System.IO.File.Exists(FileName) Then
+            System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(FileName))
             Using f As System.IO.FileStream = System.IO.File.Create(FileName)
                 f.Close()
             End Using

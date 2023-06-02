@@ -177,6 +177,38 @@
         Close()
     End Sub
 
+    Private Sub calculate_lRotation(sender As Object, e As EventArgs) Handles tWheelbase.TextChanged, tBaseyFront.TextChanged, tBaseyRear.TextChanged
+        Dim tmpWheelbase As Single = tWheelbase.TextGet() ' Wheelbase distance in meters
+        If tmpWheelbase = 0 Then
+            lRotation.Text = "---"
+            Return
+        End If
+
+        Dim tmpIni As New INIFile With {.Encoding = System.Text.Encoding.ASCII}
+        tmpIni.Load(car.Path & "\data\suspensions.ini")
+
+        ' BASEY=-0.090 ; Distance of CG from the center of the wheel in meters. Front Wheel Radius+BASEY=front CoG
+        ' we're here assuming the front and rear Tyre's Radius are the same
+
+        ' Push Rod length in meters. positive raises ride height, negative lowers ride height:
+        Dim rodFront As Single, rodRear As Single
+        'Single.TryParse(tmpIni.Value("FRONT", "ROD_LENGTH"), Globalization.NumberStyles.Any, Globalization.CultureInfo.InvariantCulture, rodFront)
+        'Single.TryParse(tmpIni.Value("REAR", "ROD_LENGTH"), Globalization.NumberStyles.Any, Globalization.CultureInfo.InvariantCulture, rodRear)
+
+        '' Motion Ratio:
+        'Dim motionRatioFront As Single = 1
+        'Select Case tmpIni.Value("FRONT", "TYPE").ToUpper
+        '    Case "DWB"
+        ' WHERE DO I GET THE SPRING COORDINATES ??
+        'End Select
+        'rodFront *= CSng(motionRatioFront ^ 2)
+
+
+        ' Calculate:
+        lRotation.Text = (Math.Atan(((tBaseyRear.TextGet() - rodRear) - (tBaseyFront.TextGet() - rodFront)) / tmpWheelbase) * 180 / Math.PI).ToString("0.00")
+        ' Actual CG height =(FWR+FBasey)+(RWR+Rbasey))/CG_LOCATION%
+    End Sub
+
     Private Sub btClose_Click(sender As Object, e As EventArgs) Handles btClose.Click
         Me.DialogResult = DialogResult.Cancel
         Close()

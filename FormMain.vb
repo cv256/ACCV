@@ -7,6 +7,8 @@
         If Not Init() Then
             Dim tmpFrm As New FormSetup
             tmpFrm.ShowDialog(Me)
+            MsgBox("Please restart now, after you have configured ACCV correctly")
+            End
         End If
 
         For Each f As String In FileIO.FileSystem.GetDirectories(ACPath & "\content\weather")
