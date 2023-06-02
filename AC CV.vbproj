@@ -11,7 +11,7 @@
     <AssemblyName>AC CV</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <PrimaryVersionType>AssemblyVersionAttribute</PrimaryVersionType>
     <UpdateAssemblyVersion>True</UpdateAssemblyVersion>
@@ -21,7 +21,8 @@
     <AssemblyVersion>1.0.464</AssemblyVersion>
     <AssemblyFileVersionSettings>None.None.Increment.None</AssemblyFileVersionSettings>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\CELERON28\Users\Familia\Desktop\Shortcuts Assetto Corsa\</PublishUrl>
+    <TargetFrameworkProfile />
+    <PublishUrl>E:\Trabalho Particular\ACCV\Publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -34,8 +35,7 @@
     <TargetCulture>en-US</TargetCulture>
     <PublisherName>Cláudio Vidal</PublisherName>
     <WebPage>publish.htm</WebPage>
-    <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -114,7 +114,7 @@
     <ManifestKeyFile>AC CV_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>false</GenerateManifests>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -229,6 +229,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
